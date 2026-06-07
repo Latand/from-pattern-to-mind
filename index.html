@@ -154,9 +154,17 @@ a{color:var(--blue); text-decoration:none; border-bottom:1px solid rgba(138,180,
   header.hero{padding:84px 0 28px}
   .lede::first-letter{font-size:62px}
 }
+
+/* version toggle */
+.modeswitch{max-width:760px; margin:0 auto; display:flex; justify-content:center; gap:8px}
+.modeswitch button{font-family:"Fraunces",serif; font-size:13px; letter-spacing:.05em; color:var(--mute); background:transparent; border:1px solid var(--line); padding:7px 20px; border-radius:999px; cursor:pointer; transition:color .15s, border-color .15s, background .15s}
+.modeswitch button:hover{color:var(--soft)}
+.modeswitch button.active{color:var(--ink); border-color:var(--mint); background:rgba(94,234,212,.08)}
+body.mode-short .v-full{display:none}
+body.mode-full .v-short{display:none}
 </style>
 </head>
-<body>
+<body class="mode-short">
 <main class="wrap">
 
 <header class="hero reveal d1">
@@ -165,10 +173,16 @@ a{color:var(--blue); text-decoration:none; border-bottom:1px solid rgba(138,180,
   <p class="dek">A working model of how structure becomes stable, then alive, then felt, and how the same machinery can turn an idea into a trap.</p>
 </header>
 
+<div class="modeswitch reveal d2" role="group" aria-label="Reading length">
+  <button type="button" data-mode="short">Concise</button>
+  <button type="button" data-mode="full">Full</button>
+</div>
+
 <div class="rule reveal d2"></div>
 
 <div class="col">
-  <p class="lede reveal d2">I have been building this map to think with. The wager is plain: I take pattern as the primitive and see how far one ladder climbs, from bare structure to agents that defend it. Where the climb stops is as informative as where it holds. Many things we keep in separate drawers &mdash; physical form, biological agency, beauty, mind, ideology &mdash; turn out to live on that ladder. A pattern, here, is a regularity you can describe more briefly than the list of its instances, relative to some model or code. A sine wave, a crystal lattice, an octave, a morphogenetic field: each is a short description standing in for something that would otherwise take forever to write down.</p>
+  <p class="lede reveal d2 v-short">I built this map to think with. The wager: take pattern as the primitive and see how far one ladder climbs &mdash; from bare structure, to agents that defend it, to minds that model what they could become. A pattern is anything you can describe more briefly than its instances. Where the climb stops says as much as where it holds.</p>
+  <p class="lede reveal d2 v-full">I have been building this map to think with. The wager is plain: I take pattern as the primitive and see how far one ladder climbs, from bare structure to agents that defend it. Where the climb stops is as informative as where it holds. Many things we keep in separate drawers &mdash; physical form, biological agency, beauty, mind, ideology &mdash; turn out to live on that ladder. A pattern, here, is a regularity you can describe more briefly than the list of its instances, relative to some model or code. A sine wave, a crystal lattice, an octave, a morphogenetic field: each is a short description standing in for something that would otherwise take forever to write down.</p>
 
 </div>
 
@@ -377,7 +391,78 @@ a{color:var(--blue); text-decoration:none; border-bottom:1px solid rgba(138,180,
   <figcaption>From Pattern to Mind. The spine reads left to right: a pattern becomes an attractor, an attractor becomes a form, a defended form becomes agency, and a modeling agent becomes a mind. Color marks how much weight each claim can bear.</figcaption>
 </figure>
 
-<div class="col">
+<div class="col v-short">
+  <section class="scene" style="background-image:url('fptm-assets/interlude-0.webp')">
+    <p class="kicker k-blue"><span class="dot"></span>The ladder</p>
+    <h2>Five rungs</h2>
+    <ul class="ladder">
+      <li><b>Pattern</b> &mdash; <span>a regularity compressible by some model.</span></li>
+      <li><b>Attractor</b> &mdash; <span>a pattern a system returns to under a dynamics.</span></li>
+      <li><b>Form</b> &mdash; <span>an attractor embodied in a substrate.</span></li>
+      <li><b>Agency</b> &mdash; <span>a form that defends itself under perturbation.</span></li>
+      <li><b>Mind</b> &mdash; <span>agency that models patterns it does not yet have.</span></li>
+    </ul>
+    <p>Each rung adds one thing the rung below lacks.</p>
+  </section>
+
+  <section class="scene" style="background-image:url('fptm-assets/interlude-logic.webp')">
+    <p class="kicker k-blue"><span class="dot"></span>Logic</p>
+    <h2>The first filter</h2>
+    <p>Logic draws the outer boundary before physics does: a square circle is never built. The filters nest &mdash; <strong>logically possible &sup; physically stable &sup; realized in matter &sup; self-defending</strong> &mdash; and every rung sits inside the one before it.</p>
+  </section>
+
+  <section class="scene" style="background-image:url('fptm-assets/interlude-1.webp')">
+    <p class="kicker k-blue"><span class="dot"></span>Agency</p>
+    <h2>A defended pattern</h2>
+    <p>A snowflake holds its shape until it melts; a cell spends its whole life holding its own, repairing and pumping and regulating. The difference is active correction: an agent detects deviation from a preferred state and acts to undo it. A bacterium swims back up the gradient; your body holds 37&deg;C without believing in thermostats. Agency comes by degree, measured by how many kinds of disturbance a system can absorb and still reach the same end.</p>
+  </section>
+
+  <section class="scene" style="background-image:url('fptm-assets/interlude-compute.webp')">
+    <p class="kicker k-blue"><span class="dot"></span>Compute</p>
+    <h2>Substrate-general logic</h2>
+    <p>The same logic runs on ion channels, transistors, or interfering waves; the universe still charges rent in energy, speed, and error. Even non-neural cells compute &mdash; Levin&rsquo;s bioelectric signals help decide what body to build &mdash; though that means goal-directed regulation, not thought. More compute searches more of the pattern-space, finds deeper compressions, and buys more agency.</p>
+  </section>
+
+  <section class="scene" style="background-image:url('fptm-assets/interlude-2.webp')">
+    <p class="kicker k-mint"><span class="dot"></span>Beauty</p>
+    <h2>Beauty as compression progress</h2>
+    <p>Repetition bores and noise says nothing; beauty lives between, where a new pattern still fits the larger one. A theme states itself, varies, resolves, and the fit is the reward. Following Schmidhuber, the feeling may track compression progress: a model expanding without breaking. The signal can lie &mdash; a myth, a slogan, a conspiracy can all feel beautiful &mdash; because a compression can fit the mind while missing the world.</p>
+  </section>
+
+  <section class="scene" style="background-image:url('fptm-assets/interlude-3.webp')">
+    <p class="kicker k-blue"><span class="dot"></span>Reality</p>
+    <h2>When is a pattern real?</h2>
+    <p>A pattern earns warrant when independent minds can recover it and use it to predict, act, and be corrected. Whether that recoverability makes a pattern real or only reveals it, I leave open. Science and propaganda both compress the world; good compression lets reality correct it, and bad compression explains the correction away.</p>
+  </section>
+
+  <section class="scene" style="background-image:url('fptm-assets/interlude-exist.webp')">
+    <p class="kicker k-purp"><span class="dot"></span>Existence</p>
+    <h2>A stronger reading</h2>
+    <p>A bolder version, held loosely: to exist is to be a pattern, and only noise resists all compression. On this view a form is a timeless possibility, and time is how it enters matter.</p>
+  </section>
+
+  <section class="scene" style="background-image:url('fptm-assets/interlude-4.webp')">
+    <p class="kicker k-mint"><span class="dot"></span>Ideas</p>
+    <h2>Ideologies behave like attractors</h2>
+    <p>Ideas move between minds, and some behave like attractors: cheap, sticky, self-sealing. Fascism, Nazism, and <em>&#x440;&#x430;&#x448;&#x438;&#x437;&#x43c;</em> hand a believer an identity, an enemy, an explanation, and a mission in one move, then treat every correction as persecution and every doubt as betrayal.</p>
+  </section>
+
+  <section class="scene" style="background-image:url('fptm-assets/interlude-5.webp')">
+    <p class="kicker k-purp"><span class="dot"></span>Selection</p>
+    <h2>Which patterns should we realize?</h2>
+    <p>Plenty of stable patterns are worth refusing &mdash; cancer, addiction, fascism &mdash; locally stable and globally destructive, holding themselves together by eating the systems that hold them. That a pattern can exist says nothing about whether to build it. The choice is value-laden, and it falls to us.</p>
+  </section>
+
+  <section class="scene" style="background-image:url('fptm-assets/interlude-6.webp')">
+    <p class="kicker k-gold"><span class="dot"></span>Open</p>
+    <h2>Questions I keep open</h2>
+    <p class="q">Is pattern something the mind imposes, or something the world is made of?</p>
+    <p class="q">Is there a real threshold where &ldquo;agent&rdquo; begins, or only a smooth axis?</p>
+    <p class="q">Is logic an outer frame on the space of patterns, or the deepest pattern of all?</p>
+  </section>
+</div>
+
+<div class="col v-full">
   <section class="scene" style="background-image:url('fptm-assets/interlude-0.webp')">
     <p class="kicker k-blue"><span class="dot"></span>The ladder</p>
     <h2>Five rungs carry most of the weight</h2>
@@ -396,7 +481,7 @@ a{color:var(--blue); text-decoration:none; border-bottom:1px solid rgba(138,180,
     <h2>The first filter</h2>
     <p>Before physics narrows anything, logic has already drawn the outer boundary: a square circle is not waiting somewhere to be built. Non-contradiction is the first filter on the space of patterns. Physics then keeps the stable ones, matter realizes some of those, and agency defends a few.</p>
     <p>The filters nest: <strong>logically possible &sup; physically stable &sup; realized in matter &sup; self-defending</strong>. Every rung of the ladder sits inside the one before it.</p>
-    <p>One caution keeps this honest. Many things that look contradictory &mdash; wave and particle, a cell that both cooperates and competes &mdash; are not breaking logic. They are a signal that the description is too coarse, and that a higher level is needed where the contradiction dissolves. A real contradiction forbids; an apparent one only asks for a better model.</p>
+    <p>One caution keeps this honest. When wave and particle, or a cell that cooperates and competes, look contradictory, the description is usually too coarse for the level it covers; sharpen the model and the clash dissolves. A real contradiction forbids; an apparent one only asks for a better model.</p>
   </section>
 
   <section class="scene" style="background-image:url('fptm-assets/interlude-1.webp')">
@@ -470,11 +555,6 @@ a{color:var(--blue); text-decoration:none; border-bottom:1px solid rgba(138,180,
     <p>This map does not review the work it leans on, but it should at least point. The language of attractors and state spaces is nonlinear dynamics. The idea of a pattern as a short description runs from Shannon&rsquo;s entropy through Kolmogorov, Solomonoff, and minimum description length. The picture of development as movement through constrained valleys is Waddington&rsquo;s, now redrawn with dynamical-systems tools. Agency as prediction and regulation owes to cybernetics and to Friston&rsquo;s free-energy principle; cognition below the brain, to Levin&rsquo;s bioelectric cells. Beauty as learnable surprise is Berlyne and Schmidhuber. The darker chapter &mdash; how ideas spread, harden, and turn self-sealing &mdash; draws on Dawkins, Arendt, Adorno, Hoffer, and Snyder. The Platonic temptation is Plato by way of Whitehead and Penrose. Full citations are below.</p>
   </section>
 
-  <div class="close">
-    <p>So pattern alone settles nothing. A pattern is scientifically interesting when it is compressible, stable, and open to correction; biological when it is embodied and maintained; agentic when it is defended; mental when it can model patterns it does not yet have; and dangerous when it seals itself off from correction. The job runs past finding patterns: test them, then choose which to build &mdash; and the choosing carries values the physics does not.</p>
-    <p>This map is one of those patterns: a compression that fits the mind, which is the exact thing it warns about. So treat it the way it asks you to treat any compression&mdash;<span class="mark">test it against reality and drop what fails.</span></p>
-  </div>
-
   <section class="sources">
     <p class="kicker k-mint"><span class="dot"></span>Sources</p>
     <h2>The shoulders this stands on</h2>
@@ -537,9 +617,9 @@ a{color:var(--blue); text-decoration:none; border-bottom:1px solid rgba(138,180,
       <li>Penrose, R. <cite>The Road to Reality</cite> (2004). A modern mathematical Platonism.</li>
     </ul>
   </section>
-
-  <footer>From Pattern to Mind &middot; a thinking artifact, revised against criticism more than once.</footer>
 </div>
+
+<footer>From Pattern to Mind &middot; a thinking artifact, revised against criticism more than once.</footer>
 
 </main>
 
@@ -645,6 +725,28 @@ a{color:var(--blue); text-decoration:none; border-bottom:1px solid rgba(138,180,
   });
 
   apply();
+})();
+</script>
+
+<script>
+(function(){
+  var saved = localStorage.getItem('fptm-mode');
+  if(saved === 'full' || saved === 'short') document.body.className = 'mode-' + saved;
+  function sync(){
+    var m = document.body.classList.contains('mode-full') ? 'full' : 'short';
+    document.querySelectorAll('.modeswitch button').forEach(function(b){
+      b.classList.toggle('active', b.getAttribute('data-mode') === m);
+    });
+  }
+  document.querySelectorAll('.modeswitch button').forEach(function(b){
+    b.addEventListener('click', function(){
+      var m = b.getAttribute('data-mode');
+      document.body.className = 'mode-' + m;
+      try{ localStorage.setItem('fptm-mode', m); }catch(e){}
+      sync();
+    });
+  });
+  sync();
 })();
 </script>
 </body>
