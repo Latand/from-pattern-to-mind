@@ -68,7 +68,7 @@ NODE_T={
   'beauty':'BEAUTY','possible':'POSSIBLE PATTERNS','logic':'LOGIC','isreal':'IS IT REAL?',
   'reality':'REALITY CONSTRAINT','existence':'EXISTENCE','attrtypes':'ATTRACTOR TYPES',
   'ideaattr':'IDEA ATTRACTORS','scale':'SCALE CONFLICT','selection':'SELECTION','ourrole':'OUR ROLE'},
- 'uk':{'pattern':'ПАТЕРН','attractor':'АТРАКТОР','form':'ФОРМА','agency':'АГЕНТНІСТЬ','mind':'РОЗУМ',
+ 'uk':{'pattern':'ПАТЕРН','attractor':'АТРАКТОР','form':'ФОРМА','agency':'ДІЄВІСТЬ','mind':'РОЗУМ',
   'compression':'СТИСНЕННЯ','dynstab':'ДИНАМІЧНА СТІЙКІСТЬ','time':'ЧАС','compute':'ОБЧИСЛЕННЯ',
   'beauty':'КРАСА','possible':'МОЖЛИВІ ПАТЕРНИ','logic':'ЛОГІКА','isreal':'ЦЕ РЕАЛЬНЕ?',
   'reality':'ОБМЕЖЕННЯ ДІЙСНІСТЮ','existence':'ІСНУВАННЯ','attrtypes':'ТИПИ АТРАКТОРІВ',
@@ -115,8 +115,8 @@ EDGE_L={
 }
 PILL_L={
  'en':['Beauty = felt ingression?','Logic: frame or ground?','Mind, or world?','Threshold or gradient?'],
- 'uk':['Краса = відчута інгресія?','Логіка: рамка чи основа?','Розум чи світ?','Поріг чи градієнт?'],
- 'ru':['Красота = ощущаемая ингрессия?','Логика: рамка или основа?','Разум или мир?','Порог или градиент?'],
+ 'uk':['Краса = відчуте входження форми?','Логіка: рамка чи основа?','Розум чи світ?','Поріг чи градієнт?'],
+ 'ru':['Красота = ощущаемое вхождение формы?','Логика: рамка или основа?','Разум или мир?','Порог или градиент?'],
 }
 LEG_L={
  'en':['defensible','plausible analogy','speculative / normative','open question'],
@@ -260,7 +260,7 @@ add('fig.caption',
 # kickers
 add('k.ladder','<span class="dot"></span>The ladder','<span class="dot"></span>Сходи','<span class="dot"></span>Лестница')
 add('k.logic','<span class="dot"></span>Logic','<span class="dot"></span>Логіка','<span class="dot"></span>Логика')
-add('k.agency','<span class="dot"></span>Agency','<span class="dot"></span>Агентність','<span class="dot"></span>Агентность')
+add('k.agency','<span class="dot"></span>Agency','<span class="dot"></span>Дієвість','<span class="dot"></span>Агентность')
 add('k.compute','<span class="dot"></span>Compute','<span class="dot"></span>Обчислення','<span class="dot"></span>Вычисление')
 add('k.beauty','<span class="dot"></span>Beauty','<span class="dot"></span>Краса','<span class="dot"></span>Красота')
 add('k.reality','<span class="dot"></span>Reality','<span class="dot"></span>Реальність','<span class="dot"></span>Реальность')
@@ -607,11 +607,21 @@ SCRIPTS = src[sidx:src.rindex('</script>')+len('</script>')]
 
 EXTRA_CSS = """
 <style>
-/* language switch */
-.langswitch{max-width:760px; margin:0 auto 12px; display:flex; justify-content:center; gap:8px}
-.langswitch button{font-family:"Fraunces",serif; font-size:12px; letter-spacing:.08em; color:var(--mute); background:transparent; border:1px solid var(--line); padding:6px 16px; border-radius:999px; cursor:pointer; transition:color .15s, border-color .15s, background .15s}
+/* language switch: pinned, unobtrusive, top-right */
+.langswitch{position:fixed; top:14px; right:14px; z-index:60; display:flex; gap:1px;
+  padding:3px; border:1px solid var(--line); border-radius:999px;
+  background:rgba(8,12,26,.55); -webkit-backdrop-filter:blur(9px); backdrop-filter:blur(9px);
+  box-shadow:0 8px 26px -16px rgba(0,0,0,.9)}
+.langswitch button{font-family:"Fraunces",serif; font-size:11.5px; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--mute); background:transparent; border:0; padding:5px 11px; border-radius:999px; cursor:pointer;
+  line-height:1; transition:color .18s, background .18s}
 .langswitch button:hover{color:var(--soft)}
-.langswitch button.active{color:var(--ink); border-color:var(--blue); background:rgba(138,180,248,.08)}
+.langswitch button.active{color:var(--bg); background:var(--mint)}
+@media(max-width:680px){ .langswitch{top:10px; right:10px} .langswitch button{padding:5px 9px; font-size:11px; letter-spacing:.1em} }
+/* mode switch: lighter, text-style to match the editorial tone */
+.modeswitch{gap:0}
+.modeswitch button{border:0; border-bottom:1px solid transparent; border-radius:0; padding:6px 14px; background:transparent; letter-spacing:.06em}
+.modeswitch button.active{border-color:var(--mint); background:transparent; color:var(--ink)}
 </style>
 """
 
@@ -667,6 +677,11 @@ svg = build_svg()
 
 BODY = """</head>
 <body class="mode-short">
+<div class="langswitch" role="group" aria-label="Language">
+  <button type="button" data-lang="en">EN</button>
+  <button type="button" data-lang="uk">UK</button>
+  <button type="button" data-lang="ru">RU</button>
+</div>
 <main class="wrap">
 
 <header class="hero reveal d1">
@@ -674,12 +689,6 @@ BODY = """</head>
   <h1 data-i18n="h1">__H1__</h1>
   <p class="dek" data-i18n="dek">__DEK__</p>
 </header>
-
-<div class="langswitch reveal d2" role="group" aria-label="Language">
-  <button type="button" data-lang="en">EN</button>
-  <button type="button" data-lang="uk">UK</button>
-  <button type="button" data-lang="ru">RU</button>
-</div>
 
 <div class="modeswitch reveal d2" role="group" aria-label="Reading length">
   <button type="button" data-mode="short" data-i18n="mode.short">__MSHORT__</button>
@@ -732,6 +741,17 @@ BODY = (BODY
 
 html = HEAD + STYLE + EXTRA_CSS + BODY + SCRIPTS + LANG_SCRIPT + "\n</body>\n</html>\n"
 open('index.html','w',encoding='utf-8').write(html)
+
+# override prose with idiomatic translations authored separately (uk.json / ru.json)
+import os
+for _lang in ('uk','ru'):
+    _p = _lang + '.json'
+    if os.path.exists(_p):
+        _ov = json.load(open(_p, encoding='utf-8'))
+        for _k, _v in _ov.items():
+            if _k in D:
+                D[_k][_lang] = _v
+        print('applied %s overrides: %d keys'%(_lang, len(_ov)))
 
 # i18n.js  (orient by language: I18N[lang][key] = html)
 INV = {l:{} for l in LANGS}
