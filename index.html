@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>From Pattern to Mind</title>
+<meta name="description" content="A working model of how structure becomes stable, alive, and felt, and how the same machinery can turn an idea into a trap.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#080C1A; --bg2:#0B1124; --panel:#0E1530; --line:#23314f;
+  --ink:#E9EDFB; --soft:#C2CBE6; --mute:#8A95B8;
+  --blue:#8AB4F8; --mint:#5EEAD4; --purp:#B79CF0; --gold:#F4C77B; --rose:#B79CF0;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:
+    radial-gradient(1200px 700px at 80% -8%, rgba(94,234,212,.07), transparent 60%),
+    radial-gradient(1100px 800px at 0% 10%, rgba(138,180,248,.08), transparent 55%),
+    radial-gradient(900px 900px at 60% 120%, rgba(183,156,240,.07), transparent 60%),
+    var(--bg);
+  color:var(--soft);
+  font-family:"Newsreader", Georgia, serif;
+  font-size:20px; line-height:1.72; letter-spacing:.1px;
+  -webkit-font-smoothing:antialiased;
+}
+/* faint starfield */
+body::before{
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background-image:
+    radial-gradient(1.4px 1.4px at 20% 30%, rgba(200,215,255,.35), transparent),
+    radial-gradient(1.2px 1.2px at 70% 60%, rgba(150,230,210,.3), transparent),
+    radial-gradient(1.1px 1.1px at 40% 80%, rgba(190,170,240,.3), transparent),
+    radial-gradient(1.3px 1.3px at 88% 20%, rgba(200,215,255,.28), transparent),
+    radial-gradient(1px 1px at 12% 70%, rgba(200,215,255,.25), transparent);
+  background-repeat:no-repeat; opacity:.6;
+}
+.wrap{position:relative; z-index:1; max-width:1200px; margin:0 auto; padding:0 26px 120px}
+.col{max-width:728px; margin:0 auto}
+
+/* hero */
+header.hero{max-width:760px; margin:0 auto; padding:120px 0 40px}
+.eyebrow{font-family:"Fraunces",serif; font-size:12.5px; letter-spacing:.34em; text-transform:uppercase; color:var(--mint); margin:0 0 26px; font-weight:600}
+h1{
+  font-family:"Fraunces", serif; font-optical-sizing:auto;
+  font-weight:380; font-size:clamp(46px,8vw,86px); line-height:1.02;
+  letter-spacing:-.01em; margin:0 0 24px; color:var(--ink);
+}
+h1 em{font-style:italic; color:var(--mint); font-weight:380}
+.dek{font-size:21px; color:var(--mute); font-style:italic; max-width:620px; margin:0}
+.rule{height:1px; background:linear-gradient(90deg, transparent, var(--line) 18%, var(--line) 82%, transparent); margin:54px auto; max-width:760px}
+
+/* body */
+p{margin:0 0 24px}
+.lede{font-size:22.5px; color:var(--ink)}
+.lede::first-letter{
+  font-family:"Fraunces",serif; font-weight:420; float:left; font-size:78px;
+  line-height:.78; padding:8px 14px 0 0; color:var(--blue);
+}
+section{margin:64px auto 0}
+.kicker{display:flex; align-items:center; gap:11px; font-family:"Fraunces",serif; font-size:12.5px; letter-spacing:.26em; text-transform:uppercase; color:var(--mute); margin:0 0 14px; font-weight:600}
+.kicker .dot{width:9px; height:9px; border-radius:2px; background:var(--blue); box-shadow:0 0 12px currentColor}
+.k-blue .dot{background:var(--blue);color:var(--blue)} .k-mint .dot{background:var(--mint);color:var(--mint)}
+.k-purp .dot{background:var(--purp);color:var(--purp)} .k-gold .dot{background:var(--gold);color:var(--gold)}
+h2{font-family:"Fraunces",serif; font-weight:400; font-size:clamp(28px,4.4vw,38px); line-height:1.12; letter-spacing:-.01em; color:var(--ink); margin:0 0 22px}
+strong{color:var(--ink); font-weight:600}
+
+/* ladder */
+.ladder{list-style:none; padding:0; margin:8px 0 4px; border-left:1px solid var(--line)}
+.ladder li{position:relative; padding:14px 0 14px 28px}
+.ladder li::before{content:""; position:absolute; left:-5px; top:24px; width:9px; height:9px; border-radius:50%; background:var(--blue); box-shadow:0 0 12px var(--blue)}
+.ladder b{font-family:"Fraunces",serif; color:var(--ink); font-weight:600; font-size:19px}
+.ladder span{color:var(--soft)}
+
+/* pull quote */
+blockquote{margin:46px 0; padding:6px 0 6px 30px; border-left:2px solid var(--mint)}
+blockquote p{font-family:"Fraunces",serif; font-style:italic; font-weight:380; font-size:clamp(26px,4.2vw,34px); line-height:1.2; color:var(--ink); margin:0}
+
+/* figure */
+figure.diagram{margin:78px auto; max-width:1180px}
+.frame{
+  position:relative;
+  background:linear-gradient(180deg, rgba(20,28,56,.55), rgba(11,17,36,.55));
+  border:1px solid var(--line); border-radius:18px; padding:14px;
+  box-shadow:0 30px 80px -40px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.04);
+  overflow:hidden; touch-action:none; cursor:grab;
+}
+.frame.grabbing{cursor:grabbing}
+.panzoom{transform-origin:0 0; will-change:transform; -webkit-user-select:none; user-select:none}
+.panzoom svg, .panzoom svg text{-webkit-user-select:none; user-select:none}
+.panzoom svg{display:block; width:100%; height:auto; border-radius:10px}
+.mapctl{position:absolute; right:18px; bottom:18px; display:flex; gap:6px; z-index:2}
+.mapctl button{width:34px; height:34px; border-radius:9px; border:1px solid var(--line); background:rgba(14,21,48,.82); color:var(--soft); font-size:19px; line-height:1; cursor:pointer; font-family:inherit; -webkit-backdrop-filter:blur(4px); backdrop-filter:blur(4px); transition:border-color .15s, color .15s}
+.mapctl button.reset{width:auto; padding:0 13px; font-size:13px; letter-spacing:.04em}
+.mapctl button:hover{border-color:var(--blue); color:var(--ink)}
+.maphint{position:absolute; left:20px; top:14px; z-index:2; color:var(--mute); font-size:12.5px; font-family:"Fraunces",serif; font-style:italic; pointer-events:none; transition:opacity .4s}
+.frame.touched .maphint{opacity:0}
+figcaption{color:var(--mute); font-size:15.5px; line-height:1.6; margin:18px 6px 0; font-style:italic}
+
+/* image scenes: each section's text sits on top of its image */
+.scene{position:relative; left:50%; transform:translateX(-50%); width:min(1180px, calc(100vw - 52px));
+  margin:30px 0 0; padding:clamp(48px,6vw,96px) max(26px, calc((100% - 668px)/2));
+  border-radius:18px; background-size:cover; background-position:center; background-repeat:no-repeat;
+  border:1px solid var(--line); box-shadow:0 30px 80px -50px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.04)}
+.scene::before{content:""; position:absolute; inset:0; border-radius:18px; pointer-events:none;
+  background:linear-gradient(180deg, rgba(8,12,26,.6), rgba(8,12,26,.48) 45%, rgba(8,12,26,.6)),
+             radial-gradient(130% 100% at 50% 46%, rgba(8,12,26,.55), transparent 78%)}
+.scene > *{position:relative; z-index:1}
+.scene p, .scene .q, .scene .ladder span{color:#DCE3F4}
+.scene h2{text-shadow:0 2px 18px rgba(4,7,18,.92)}
+.scene p, .scene li, .scene .q, .scene blockquote p, .scene .ladder b, .scene .ladder span{text-shadow:0 1px 8px rgba(4,7,18,.95)}
+@media(max-width:680px){ .scene{margin:18px 0 0; padding:40px 22px} }
+.legend{display:flex; flex-wrap:wrap; gap:18px; margin:16px 6px 0; font-family:"Fraunces",serif; font-size:13px; letter-spacing:.02em; color:var(--soft)}
+.legend i{display:inline-block; width:22px; height:0; border-top:3px solid; margin-right:8px; vertical-align:middle}
+.legend .hard{border-color:var(--blue)} .legend .bridge{border-color:var(--mint)}
+.legend .spec{border-color:var(--purp); border-top-style:dashed} .legend .open{border-color:var(--gold); border-top-style:dashed}
+.legend .norm{border-color:var(--rose)}
+
+/* questions */
+.q{font-family:"Fraunces",serif; font-style:italic; font-size:22px; color:var(--ink); margin:0 0 18px; padding-left:22px; border-left:1px solid var(--gold)}
+
+/* close */
+.close{margin-top:80px; padding:34px 32px; border:1px solid var(--line); border-radius:16px;
+  background:radial-gradient(600px 200px at 30% 0%, rgba(94,234,212,.06), transparent), var(--panel)}
+.close p{margin:0; font-size:19px}
+.close .mark{font-family:"Fraunces",serif; font-style:italic; color:var(--mint)}
+
+/* sources / references apparatus */
+.sources{max-width:728px; margin:80px auto 0}
+.sources .note{font-style:italic; color:var(--mute); font-size:16px; margin:0 0 26px}
+.sources h3{font-family:"Fraunces",serif; font-size:12px; letter-spacing:.22em; text-transform:uppercase; color:var(--mint); font-weight:600; margin:28px 0 10px}
+.sources ul{list-style:none; padding:0; margin:0}
+.sources li{font-size:15px; line-height:1.5; color:var(--mute); margin:0 0 8px; padding-left:20px; text-indent:-20px}
+.sources li cite{font-style:italic; color:var(--soft)}
+footer{max-width:728px; margin:54px auto 0; color:var(--mute); font-size:14px; letter-spacing:.04em}
+
+a{color:var(--blue); text-decoration:none; border-bottom:1px solid rgba(138,180,248,.3)}
+
+/* load reveal */
+.reveal{opacity:0; transform:translateY(16px); animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes rise{to{opacity:1; transform:none}}
+.d1{animation-delay:.05s}.d2{animation-delay:.15s}.d3{animation-delay:.25s}.d4{animation-delay:.35s}
+
+@media (prefers-reduced-motion: reduce){
+  *{animation:none !important; scroll-behavior:auto !important}
+  .reveal{opacity:1; transform:none}
+}
+
+@media(max-width:680px){
+  body{font-size:18px}
+  header.hero{padding:84px 0 28px}
+  .lede::first-letter{font-size:62px}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+
+<header class="hero reveal d1">
+  <p class="eyebrow">A thinking map &middot; philosophy of mind</p>
+  <h1>From Pattern <em>to</em> Mind</h1>
+  <p class="dek">A working model of how structure becomes stable, then alive, then felt, and how the same machinery can turn an idea into a trap.</p>
+</header>
+
+<div class="rule reveal d2"></div>
+
+<div class="col">
+  <p class="lede reveal d2">I have been building this map to think with. The wager is plain: I take pattern as the primitive and see how far one ladder climbs, from bare structure to agents that defend it. Where the climb stops is as informative as where it holds. Many things we keep in separate drawers &mdash; physical form, biological agency, beauty, mind, ideology &mdash; turn out to live on that ladder. A pattern, here, is a regularity you can describe more briefly than the list of its instances, relative to some model or code. A sine wave, a crystal lattice, an octave, a morphogenetic field: each is a short description standing in for something that would otherwise take forever to write down.</p>
+
+</div>
+
+<figure class="diagram reveal d2">
+  <div class="frame" id="mapFrame"><div class="panzoom" id="panzoom"><svg xmlns="http://www.w3.org/2000/svg" width="2080" height="1300" viewBox="0 0 2080 1300" font-family="Calibri, Segoe UI, sans-serif" role="img" aria-labelledby="diagram-title diagram-desc">
+<title id="diagram-title">From Pattern to Mind &mdash; concept map</title>
+<desc id="diagram-desc">A left-to-right spine reads pattern, attractor, form, agency, mind. Arrows link it to its lenses and tests: logic, compression, dynamical stability, time, compute, beauty, possible patterns, reality, existence, idea attractors, scale conflict, selection. Colour marks how much weight each claim bears: defensible, plausible analogy, speculative or normative, and open question.</desc>
+<rect width="2080" height="1300" fill="#0B1020"/>
+<circle cx="683" cy="328" r="1.3" fill="#93A0C4" opacity="0.10"/>
+<circle cx="118" cy="168" r="1.6" fill="#8AB4F8" opacity="0.10"/>
+<circle cx="768" cy="1213" r="1.0" fill="#93A0C4" opacity="0.10"/>
+<circle cx="459" cy="96" r="1.0" fill="#5EEAD4" opacity="0.10"/>
+<circle cx="876" cy="163" r="1.0" fill="#8AB4F8" opacity="0.10"/>
+<circle cx="1148" cy="889" r="1.0" fill="#93A0C4" opacity="0.10"/>
+<circle cx="273" cy="477" r="1.6" fill="#93A0C4" opacity="0.10"/>
+<circle cx="1213" cy="146" r="1.6" fill="#93A0C4" opacity="0.10"/>
+<circle cx="832" cy="121" r="1.0" fill="#8AB4F8" opacity="0.10"/>
+<circle cx="1160" cy="292" r="1.3" fill="#5EEAD4" opacity="0.10"/>
+<circle cx="315" cy="1127" r="1.0" fill="#93A0C4" opacity="0.10"/>
+<circle cx="651" cy="1167" r="1.6" fill="#8AB4F8" opacity="0.10"/>
+<circle cx="231" cy="1211" r="1.6" fill="#93A0C4" opacity="0.10"/>
+<circle cx="404" cy="782" r="1.0" fill="#93A0C4" opacity="0.10"/>
+<circle cx="1478" cy="148" r="1.6" fill="#8AB4F8" opacity="0.10"/>
+<circle cx="1287" cy="441" r="1.3" fill="#93A0C4" opacity="0.10"/>
+<circle cx="1108" cy="895" r="1.3" fill="#5EEAD4" opacity="0.10"/>
+<circle cx="1219" cy="948" r="1.3" fill="#5EEAD4" opacity="0.10"/>
+<circle cx="528" cy="388" r="1.6" fill="#8AB4F8" opacity="0.10"/>
+<circle cx="187" cy="1196" r="1.3" fill="#93A0C4" opacity="0.10"/>
+<circle cx="1033" cy="723" r="1.6" fill="#5EEAD4" opacity="0.10"/>
+<circle cx="609" cy="1267" r="1.0" fill="#8AB4F8" opacity="0.10"/>
+<circle cx="1068" cy="876" r="1.0" fill="#5EEAD4" opacity="0.10"/>
+<circle cx="331" cy="1021" r="1.3" fill="#8AB4F8" opacity="0.10"/>
+<circle cx="1990" cy="178" r="1.6" fill="#93A0C4" opacity="0.10"/>
+<circle cx="1636" cy="662" r="1.3" fill="#93A0C4" opacity="0.10"/>
+<circle cx="737" cy="1237" r="1.3" fill="#93A0C4" opacity="0.10"/>
+<circle cx="1652" cy="954" r="1.0" fill="#8AB4F8" opacity="0.10"/>
+<circle cx="1954" cy="572" r="1.3" fill="#93A0C4" opacity="0.10"/>
+<circle cx="1380" cy="153" r="1.0" fill="#93A0C4" opacity="0.10"/>
+<circle cx="1456" cy="654" r="1.6" fill="#93A0C4" opacity="0.10"/>
+<circle cx="2053" cy="932" r="1.3" fill="#93A0C4" opacity="0.10"/>
+<circle cx="810" cy="730" r="1.0" fill="#5EEAD4" opacity="0.10"/>
+<circle cx="747" cy="364" r="1.6" fill="#8AB4F8" opacity="0.10"/>
+<defs>
+<marker id="ar-b" markerWidth="13" markerHeight="13" refX="9" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4 L0,8 z" fill="#8AB4F8"/></marker>
+<marker id="ar-m" markerWidth="13" markerHeight="13" refX="9" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4 L0,8 z" fill="#5EEAD4"/></marker>
+<marker id="ar-p" markerWidth="13" markerHeight="13" refX="9" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4 L0,8 z" fill="#B79CF0"/></marker>
+<marker id="ar-g" markerWidth="13" markerHeight="13" refX="9" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4 L0,8 z" fill="#F4C77B"/></marker>
+</defs>
+<rect x="150" y="624" width="1810" height="62" rx="31" fill="#0E1733" opacity="0.45"/>
+<text x="40" y="50" fill="#FFFFFF" font-size="25" font-weight="700" font-family="Georgia, serif">From Pattern to Mind</text>
+<text x="40" y="74" fill="#93A0C4" font-size="13">logic ▸ pattern ▸ attractor ▸ form ▸ agency ▸ mind</text>
+<line x1="454.0" y1="655.0" x2="598.0" y2="655.0" stroke="#8AB4F8" stroke-width="3.0" opacity="0.85" marker-end="url(#ar-b)"/>
+<line x1="842.0" y1="655.0" x2="971.0" y2="655.0" stroke="#8AB4F8" stroke-width="3.0" opacity="0.85" marker-end="url(#ar-b)"/>
+<line x1="1199.0" y1="655.0" x2="1336.0" y2="655.0" stroke="#8AB4F8" stroke-width="3.0" opacity="0.85" marker-end="url(#ar-b)"/>
+<line x1="1554.0" y1="655.0" x2="1681.0" y2="655.0" stroke="#8AB4F8" stroke-width="3.0" opacity="0.85" marker-end="url(#ar-b)"/>
+<line x1="340.0" y1="617.0" x2="340.0" y2="453.0" stroke="#8AB4F8" stroke-width="1.7" opacity="0.60" marker-end="url(#ar-b)"/>
+<line x1="720.0" y1="617.0" x2="720.0" y2="453.0" stroke="#8AB4F8" stroke-width="1.7" opacity="0.60" marker-end="url(#ar-b)"/>
+<line x1="1085.0" y1="617.0" x2="1085.0" y2="453.0" stroke="#8AB4F8" stroke-width="1.7" opacity="0.60" marker-end="url(#ar-b)"/>
+<line x1="1445.0" y1="617.0" x2="1445.0" y2="453.0" stroke="#8AB4F8" stroke-width="1.7" opacity="0.60" marker-end="url(#ar-b)"/>
+<line x1="340.0" y1="377.0" x2="340.0" y2="233.0" stroke="#5EEAD4" stroke-width="1.7" opacity="0.60" marker-end="url(#ar-m)"/>
+<line x1="1243.0" y1="180.0" x2="1023.0" y2="180.0" stroke="#B79CF0" stroke-width="1.7" opacity="0.50" stroke-dasharray="6,6" marker-end="url(#ar-p)"/>
+<line x1="855.2" y1="218.0" x2="384.8" y2="617.0" stroke="#B79CF0" stroke-width="1.7" opacity="0.50" stroke-dasharray="6,6" marker-end="url(#ar-p)"/>
+<line x1="914.8" y1="218.0" x2="1070.2" y2="617.0" stroke="#B79CF0" stroke-width="1.7" opacity="0.50" stroke-dasharray="6,6" marker-end="url(#ar-p)"/>
+<line x1="340.0" y1="693.0" x2="340.0" y2="857.0" stroke="#8AB4F8" stroke-width="1.7" opacity="0.60" marker-end="url(#ar-b)"/>
+<line x1="340.0" y1="1057.0" x2="340.0" y2="933.0" stroke="#8AB4F8" stroke-width="1.7" opacity="0.60" marker-end="url(#ar-b)"/>
+<line x1="720.0" y1="693.0" x2="720.0" y2="857.0" stroke="#8AB4F8" stroke-width="1.7" opacity="0.60" marker-end="url(#ar-b)"/>
+<line x1="1085.0" y1="693.0" x2="1085.0" y2="857.0" stroke="#5EEAD4" stroke-width="1.7" opacity="0.60" marker-end="url(#ar-m)"/>
+<line x1="1737.0" y1="693.0" x2="1508.0" y2="857.0" stroke="#5EEAD4" stroke-width="1.7" opacity="0.60" marker-end="url(#ar-m)"/>
+<line x1="1338.6" y1="857.0" x2="836.4" y2="693.0" stroke="#5EEAD4" stroke-width="1.7" opacity="0.60" marker-end="url(#ar-m)"/>
+<line x1="1790.8" y1="693.0" x2="1794.2" y2="857.0" stroke="#B79CF0" stroke-width="1.7" opacity="0.50" stroke-dasharray="6,6" marker-end="url(#ar-p)"/>
+<line x1="1799.8" y1="933.0" x2="1815.2" y2="1057.0" stroke="#B79CF0" stroke-width="1.7" opacity="0.50" stroke-dasharray="6,6" marker-end="url(#ar-p)"/>
+<line x1="1216.0" y1="1058.1" x2="1681.0" y2="927.1" stroke="#B79CF0" stroke-width="1.7" opacity="0.50" stroke-dasharray="6,6" marker-end="url(#ar-p)"/>
+<rect x="235" y="626" width="210" height="58" rx="11" fill="#141C32" stroke="#5EEAD4" stroke-width="2.6"/>
+<text x="340" y="652" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">PATTERN</text>
+<text x="340" y="670" fill="#9AA6CC" font-size="11" text-anchor="middle" font-style="italic">compressible by a model</text>
+<rect x="607" y="626" width="226" height="58" rx="11" fill="#141C32" stroke="#8AB4F8" stroke-width="1.7"/>
+<text x="720" y="652" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">ATTRACTOR</text>
+<text x="720" y="670" fill="#9AA6CC" font-size="11" text-anchor="middle" font-style="italic">stable region in state-space</text>
+<rect x="980" y="626" width="210" height="58" rx="11" fill="#141C32" stroke="#8AB4F8" stroke-width="1.7"/>
+<text x="1085" y="652" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">FORM</text>
+<text x="1085" y="670" fill="#9AA6CC" font-size="11" text-anchor="middle" font-style="italic">attractor realized in matter</text>
+<rect x="1345" y="626" width="200" height="58" rx="11" fill="#141C32" stroke="#8AB4F8" stroke-width="1.7"/>
+<text x="1445" y="652" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">AGENCY</text>
+<text x="1445" y="670" fill="#9AA6CC" font-size="11" text-anchor="middle" font-style="italic">a defended pattern</text>
+<rect x="1690" y="626" width="200" height="58" rx="11" fill="#141C32" stroke="#8AB4F8" stroke-width="1.7"/>
+<text x="1790" y="652" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">MIND</text>
+<text x="1790" y="670" fill="#9AA6CC" font-size="11" text-anchor="middle" font-style="italic">models possible patterns</text>
+<rect x="235" y="386" width="210" height="58" rx="11" fill="#141C32" stroke="#8AB4F8" stroke-width="1.7"/>
+<text x="340" y="412" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">COMPRESSION</text>
+<text x="340" y="430" fill="#9AA6CC" font-size="11" text-anchor="middle" font-style="italic">pattern as description</text>
+<rect x="601" y="386" width="238" height="58" rx="11" fill="#141C32" stroke="#8AB4F8" stroke-width="1.7"/>
+<text x="720" y="412" fill="#FFFFFF" font-size="12" font-weight="700" text-anchor="middle">DYNAMICAL STABILITY</text>
+<text x="720" y="430" fill="#9AA6CC" font-size="11" text-anchor="middle" font-style="italic">pattern as return</text>
+<rect x="996" y="386" width="178" height="58" rx="11" fill="#141C32" stroke="#8AB4F8" stroke-width="1.7"/>
+<text x="1085" y="412" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">TIME</text>
+<text x="1085" y="430" fill="#9AA6CC" font-size="11" text-anchor="middle" font-style="italic">pattern unfolding</text>
+<rect x="1333" y="386" width="224" height="58" rx="11" fill="#141C32" stroke="#8AB4F8" stroke-width="1.7"/>
+<text x="1445" y="412" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">COMPUTE</text>
+<text x="1445" y="430" fill="#9AA6CC" font-size="11" text-anchor="middle" font-style="italic">substrate-general; cells compute</text>
+<rect x="242" y="166" width="196" height="58" rx="11" fill="#141C32" stroke="#5EEAD4" stroke-width="1.7"/>
+<text x="340" y="192" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">BEAUTY</text>
+<text x="340" y="210" fill="#9AA6CC" font-size="11" text-anchor="middle" font-style="italic">compression progress</text>
+<rect x="786" y="151" width="228" height="58" rx="11" fill="#141C32" stroke="#B79CF0" stroke-width="1.7"/>
+<text x="900" y="177" fill="#FFFFFF" font-size="13" font-weight="700" text-anchor="middle">POSSIBLE PATTERNS</text>
+<text x="900" y="195" fill="#9AA6CC" font-size="11" text-anchor="middle" font-style="italic">what could be · Platonic?</text>
+<rect x="1252" y="151" width="216" height="58" rx="11" fill="#141C32" stroke="#8AB4F8" stroke-width="1.7"/>
+<text x="1360" y="177" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">LOGIC</text>
+<text x="1360" y="195" fill="#9AA6CC" font-size="11" text-anchor="middle" font-style="italic">first filter: non-contradiction</text>
+<rect x="240" y="866" width="200" height="58" rx="11" fill="#141C32" stroke="#8AB4F8" stroke-width="1.7"/>
+<text x="340" y="892" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">IS IT REAL?</text>
+<text x="340" y="910" fill="#9AA6CC" font-size="11" text-anchor="middle" font-style="italic">recoverable + predictive</text>
+<rect x="223" y="1066" width="234" height="58" rx="11" fill="#141C32" stroke="#8AB4F8" stroke-width="1.7"/>
+<text x="340" y="1092" fill="#FFFFFF" font-size="12" font-weight="700" text-anchor="middle">REALITY CONSTRAINT</text>
+<text x="340" y="1110" fill="#9AA6CC" font-size="11" text-anchor="middle" font-style="italic">reality pushes back</text>
+<rect x="621" y="866" width="198" height="58" rx="11" fill="#141C32" stroke="#8AB4F8" stroke-width="1.7"/>
+<text x="720" y="892" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">EXISTENCE</text>
+<text x="720" y="910" fill="#9AA6CC" font-size="11" text-anchor="middle" font-style="italic">pattern that persists</text>
+<rect x="959" y="866" width="252" height="58" rx="11" fill="#141C32" stroke="#5EEAD4" stroke-width="1.7"/>
+<text x="1085" y="892" fill="#FFFFFF" font-size="13" font-weight="700" text-anchor="middle">ATTRACTOR TYPES</text>
+<text x="1085" y="910" fill="#9AA6CC" font-size="11" text-anchor="middle" font-style="italic">cell fate · phenotypes · neurotypes?</text>
+<rect x="1347" y="866" width="216" height="58" rx="11" fill="#141C32" stroke="#5EEAD4" stroke-width="1.7"/>
+<text x="1455" y="892" fill="#FFFFFF" font-size="13" font-weight="700" text-anchor="middle">IDEA ATTRACTORS</text>
+<text x="1455" y="910" fill="#9AA6CC" font-size="11" text-anchor="middle" font-style="italic">patterns in idea-space</text>
+<rect x="963" y="1066" width="244" height="58" rx="11" fill="#141C32" stroke="#B79CF0" stroke-width="1.7"/>
+<text x="1085" y="1092" fill="#FFFFFF" font-size="13" font-weight="700" text-anchor="middle">SCALE CONFLICT</text>
+<text x="1085" y="1110" fill="#9AA6CC" font-size="11" text-anchor="middle" font-style="italic">local attractor, global harm</text>
+<rect x="1690" y="866" width="210" height="58" rx="11" fill="#141C32" stroke="#B79CF0" stroke-width="1.7"/>
+<text x="1795" y="892" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">SELECTION</text>
+<text x="1795" y="910" fill="#9AA6CC" font-size="11" text-anchor="middle" font-style="italic">which to realize?</text>
+<rect x="1707" y="1066" width="226" height="58" rx="11" fill="#141C32" stroke="#B79CF0" stroke-width="1.7"/>
+<text x="1820" y="1092" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">OUR ROLE</text>
+<text x="1820" y="1110" fill="#9AA6CC" font-size="11" text-anchor="middle" font-style="italic">search · test · choose · realize</text>
+<rect x="476.7" y="646.0" width="98.6" height="18" rx="5" fill="#0B1020" opacity="0.92"/>
+<text x="526.0" y="658.5" fill="#8AB4F8" font-size="10.5" text-anchor="middle">becomes stable</text>
+<rect x="845.4" y="646.0" width="122.2" height="18" rx="5" fill="#0B1020" opacity="0.92"/>
+<text x="906.5" y="658.5" fill="#8AB4F8" font-size="10.5" text-anchor="middle">realized in matter</text>
+<rect x="1203.5" y="646.0" width="128.1" height="18" rx="5" fill="#0B1020" opacity="0.92"/>
+<text x="1267.5" y="658.5" fill="#8AB4F8" font-size="10.5" text-anchor="middle">defended under load</text>
+<rect x="1580.0" y="646.0" width="75.0" height="18" rx="5" fill="#0B1020" opacity="0.92"/>
+<text x="1617.5" y="658.5" fill="#8AB4F8" font-size="10.5" text-anchor="middle">modeled by</text>
+<rect x="311.4" y="526.0" width="57.3" height="18" rx="5" fill="#0B1020" opacity="0.92"/>
+<text x="340.0" y="538.5" fill="#8AB4F8" font-size="10.5" text-anchor="middle">seen as</text>
+<rect x="691.4" y="526.0" width="57.3" height="18" rx="5" fill="#0B1020" opacity="0.92"/>
+<text x="720.0" y="538.5" fill="#8AB4F8" font-size="10.5" text-anchor="middle">seen as</text>
+<rect x="1047.5" y="526.0" width="75.0" height="18" rx="5" fill="#0B1020" opacity="0.92"/>
+<text x="1085.0" y="538.5" fill="#8AB4F8" font-size="10.5" text-anchor="middle">unfolds in</text>
+<rect x="1416.3" y="526.0" width="57.3" height="18" rx="5" fill="#0B1020" opacity="0.92"/>
+<text x="1445.0" y="538.5" fill="#8AB4F8" font-size="10.5" text-anchor="middle">runs on</text>
+<rect x="311.4" y="296.0" width="57.3" height="18" rx="5" fill="#0B1020" opacity="0.92"/>
+<text x="340.0" y="308.5" fill="#5EEAD4" font-size="10.5" text-anchor="middle">felt as</text>
+<rect x="1069.0" y="171.0" width="128.1" height="18" rx="5" fill="#0B1020" opacity="0.92"/>
+<text x="1133.0" y="183.5" fill="#B79CF0" font-size="10.5" text-anchor="middle">bounds the possible</text>
+<rect x="478.5" y="504.3" width="57.3" height="18" rx="5" fill="#0B1020" opacity="0.92"/>
+<text x="507.1" y="516.8" fill="#B79CF0" font-size="10.5" text-anchor="middle">options</text>
+<rect x="985.8" y="472.3" width="63.2" height="18" rx="5" fill="#0B1020" opacity="0.92"/>
+<text x="1017.4" y="484.8" fill="#B79CF0" font-size="10.5" text-anchor="middle">could-be</text>
+<rect x="299.6" y="766.0" width="80.9" height="18" rx="5" fill="#0B1020" opacity="0.92"/>
+<text x="340.0" y="778.5" fill="#8AB4F8" font-size="10.5" text-anchor="middle">is it real?</text>
+<rect x="308.4" y="986.0" width="63.2" height="18" rx="5" fill="#0B1020" opacity="0.92"/>
+<text x="340.0" y="998.5" fill="#8AB4F8" font-size="10.5" text-anchor="middle">corrects</text>
+<rect x="679.5" y="766.0" width="80.9" height="18" rx="5" fill="#0B1020" opacity="0.92"/>
+<text x="720.0" y="778.5" fill="#8AB4F8" font-size="10.5" text-anchor="middle">persists as</text>
+<rect x="1035.7" y="766.0" width="98.6" height="18" rx="5" fill="#0B1020" opacity="0.92"/>
+<text x="1085.0" y="778.5" fill="#5EEAD4" font-size="10.5" text-anchor="middle">comes in kinds</text>
+<rect x="1573.2" y="766.0" width="98.6" height="18" rx="5" fill="#0B1020" opacity="0.92"/>
+<text x="1622.5" y="778.5" fill="#5EEAD4" font-size="10.5" text-anchor="middle">lives in minds</text>
+<rect x="973.2" y="749.6" width="128.1" height="18" rx="5" fill="#0B1020" opacity="0.92"/>
+<text x="1037.3" y="762.1" fill="#5EEAD4" font-size="10.5" text-anchor="middle">a kind of attractor</text>
+<rect x="1752.0" y="766.0" width="80.9" height="18" rx="5" fill="#0B1020" opacity="0.92"/>
+<text x="1792.5" y="778.5" fill="#B79CF0" font-size="10.5" text-anchor="middle">must choose</text>
+<rect x="1767.0" y="986.0" width="80.9" height="18" rx="5" fill="#0B1020" opacity="0.92"/>
+<text x="1807.5" y="998.5" fill="#B79CF0" font-size="10.5" text-anchor="middle">falls to us</text>
+<rect x="1371.8" y="988.8" width="116.3" height="18" rx="5" fill="#0B1020" opacity="0.92"/>
+<text x="1429.9" y="1001.3" fill="#B79CF0" font-size="10.5" text-anchor="middle">forces the choice</text>
+<rect x="488.0" y="94.0" width="174.0" height="28" rx="14" fill="#1A1530" stroke="#F4C77B" stroke-width="1.3"/>
+<text x="575.0" y="112.0" fill="#F4C77B" font-size="11.5" text-anchor="middle">Beauty = felt ingression?</text>
+<rect x="1279.0" y="82.0" width="162.0" height="28" rx="14" fill="#1A1530" stroke="#F4C77B" stroke-width="1.3"/>
+<text x="1360.0" y="100.0" fill="#F4C77B" font-size="11.5" text-anchor="middle">Logic: frame or ground?</text>
+<rect x="463.0" y="764.0" width="114.0" height="28" rx="14" fill="#1A1530" stroke="#F4C77B" stroke-width="1.3"/>
+<text x="520.0" y="782.0" fill="#F4C77B" font-size="11.5" text-anchor="middle">Mind, or world?</text>
+<rect x="1554.0" y="764.0" width="156.0" height="28" rx="14" fill="#1A1530" stroke="#F4C77B" stroke-width="1.3"/>
+<text x="1632.0" y="782.0" fill="#F4C77B" font-size="11.5" text-anchor="middle">Threshold or gradient?</text>
+<text x="44" y="1150" fill="#93A0C4" font-size="12" font-weight="700">LAYERS</text>
+<line x1="44" y1="1168" x2="72" y2="1168" stroke="#8AB4F8" stroke-width="2.6"/>
+<text x="80" y="1171" fill="#CDD6F0" font-size="11.5">defensible</text>
+<line x1="44" y1="1186" x2="72" y2="1186" stroke="#5EEAD4" stroke-width="2.6"/>
+<text x="80" y="1189" fill="#CDD6F0" font-size="11.5">plausible analogy</text>
+<line x1="44" y1="1204" x2="72" y2="1204" stroke="#B79CF0" stroke-width="2.6" stroke-dasharray="4,4"/>
+<text x="80" y="1207" fill="#CDD6F0" font-size="11.5">speculative / normative</text>
+<line x1="44" y1="1222" x2="72" y2="1222" stroke="#F4C77B" stroke-width="2.6" stroke-dasharray="4,4"/>
+<text x="80" y="1225" fill="#CDD6F0" font-size="11.5">open question</text>
+<text x="2040" y="1262" fill="#93A0C4" font-size="12" text-anchor="end" font-style="italic">↻ this map is itself an idea-attractor — a compression to test against reality, then drop where it fails.</text>
+</svg></div>
+  <div class="maphint">drag to pan &middot; scroll or pinch to zoom &middot; double-click to reset</div>
+  <div class="mapctl">
+    <button type="button" data-z="out" aria-label="Zoom out">&minus;</button>
+    <button type="button" data-z="in" aria-label="Zoom in">+</button>
+    <button type="button" class="reset" data-z="reset" aria-label="Reset view">reset</button>
+  </div></div>
+  <div class="legend">
+    <span><i class="hard"></i>defensible</span>
+    <span><i class="bridge"></i>plausible analogy</span>
+    <span><i class="spec"></i>speculative / normative</span>
+    <span><i class="open"></i>open question</span>
+  </div>
+  <figcaption>From Pattern to Mind. The spine reads left to right: a pattern becomes an attractor, an attractor becomes a form, a defended form becomes agency, and a modeling agent becomes a mind. Color marks how much weight each claim can bear.</figcaption>
+</figure>
+
+<div class="col">
+  <section class="scene" style="background-image:url('fptm-assets/interlude-0.webp')">
+    <p class="kicker k-blue"><span class="dot"></span>The ladder</p>
+    <h2>Five rungs carry most of the weight</h2>
+    <ul class="ladder">
+      <li><b>Pattern</b> &mdash; <span>a regularity compressible by some model or code.</span></li>
+      <li><b>Attractor</b> &mdash; <span>a region a system tends to return to under a dynamics.</span></li>
+      <li><b>Form</b> &mdash; <span>the embodied expression of an attractor in a substrate.</span></li>
+      <li><b>Agency</b> &mdash; <span>active preservation of a form or goal-state under perturbation.</span></li>
+      <li><b>Mind</b> &mdash; <span>agency with counterfactual modeling of possible patterns.</span></li>
+    </ul>
+    <p>Each rung adds one thing the rung below lacks. That is the reason to prefer a ladder over the slogan &ldquo;everything is pattern,&rdquo; which explains nothing. One note on a word that recurs below. In its strict sense &mdash; the one nonlinear dynamics makes precise &mdash; an <em>attractor</em> needs a state space and a dynamics, a set that trajectories fall toward. I use it literally only when those can be specified, and as a disciplined analogy for minds and cultures otherwise.</p>
+  </section>
+
+  <section class="scene" style="background-image:url('fptm-assets/interlude-logic.webp')">
+    <p class="kicker k-blue"><span class="dot"></span>Logic</p>
+    <h2>The first filter</h2>
+    <p>Before physics narrows anything, logic has already drawn the outer boundary: a square circle is not waiting somewhere to be built. Non-contradiction is the first filter on the space of patterns. Physics then keeps the stable ones, matter realizes some of those, and agency defends a few.</p>
+    <p>The filters nest: <strong>logically possible &sup; physically stable &sup; realized in matter &sup; self-defending</strong>. Every rung of the ladder sits inside the one before it.</p>
+    <p>One caution keeps this honest. Many things that look contradictory &mdash; wave and particle, a cell that both cooperates and competes &mdash; are not breaking logic. They are a signal that the description is too coarse, and that a higher level is needed where the contradiction dissolves. A real contradiction forbids; an apparent one only asks for a better model.</p>
+  </section>
+
+  <section class="scene" style="background-image:url('fptm-assets/interlude-1.webp')">
+    <p class="kicker k-blue"><span class="dot"></span>Agency</p>
+    <h2>A defended pattern</h2>
+    <p>A snowflake has structure and loses it the moment the temperature rises. A cell has structure and spends its whole existence keeping it: repairing the membrane, pumping ions, regulating its chemistry, importing food, expelling waste. Both have a pattern. The difference is that the cell detects deviations from viability and acts to reduce them. Agency begins where stability becomes active correction.</p>
+    <p>An agent, then, is a system that detects deviation from a preferred state and acts to restore or protect it.</p>
+    <p>An asteroid on an orbit follows a pattern, and if something knocks it off course it simply continues on the new course. A bacterium knocked away from food swims back up the gradient. The bacterium has a state it returns to. That returned-to state is the goal, and the goal shows up in behavior long before anything writes it down. Your body holds its temperature near 37&deg;C without believing anything about thermostats. It shivers, it sweats, it gets hungry.</p>
+    <p>Agency comes by degree, but not every resistance is agency. A crystal merely resists deformation; a flame conditionally self-maintains; a bacterium regulates, repairs, and returns itself to viable states; a human defends across enormous scales: body, identity, family, a scientific theory, a country. A useful measure is how many kinds of disturbance a system can absorb and still arrive at the same end.</p>
+  </section>
+
+  <section class="scene" style="background-image:url('fptm-assets/interlude-compute.webp')">
+    <p class="kicker k-blue"><span class="dot"></span>Compute</p>
+    <h2>Substrate-general logic</h2>
+    <p>Computation is substrate-general: the same operations run on ion channels, on transistors, or on interfering waves, where resonance adds and cancellation subtracts. The logic is portable; the universe charges rent. Every real machine pays its substrate&rsquo;s bill in energy, speed, and error.</p>
+    <p>So computation reaches well past the brain. Following Levin&rsquo;s work on bioelectricity, even non-neural cells compute with electrical signals, and that signalling helps decide what body to build &mdash; the thread that runs down from thought to morphology. None of this means a cell reasons or feels; it means goal-directed regulation over a space of problems, cognition in the basal sense and nothing grander. And the search has structure: patterns prune the space, so a system explores the allowed region rather than the whole of it, which is what keeps it cheap enough to run.</p>
+    <p>More of it changes what is reachable. More compute means more of the pattern-space searched, which means deeper compressions found and more value pulled out &mdash; and more agency too, since a richer model answers more kinds of disturbance. The scaling looks the same whether the substrate is a chip or an organism. Compute does not invent possibilities; it searches, realizes, and constrains the ones the substrate already allows.</p>
+  </section>
+
+  <section class="scene" style="background-image:url('fptm-assets/interlude-2.webp')">
+    <p class="kicker k-mint"><span class="dot"></span>Beauty</p>
+    <h2>Beauty as compression progress</h2>
+    <p>Repetition alone is dull. <em>AAAAAA</em> is maximally compressible and says nothing. Noise sits at the other end, with no compression available at all. The interesting zone lies between them, and music lives there. What lives there is meaningful surprise, and the word <em>meaningful</em> is doing the work: a new pattern that still fits the larger pattern. Mere novelty will not do, since noise is novel too and fits nothing. A theme repeats, so the mind builds a model. The theme varies, which creates tension. The variation resolves, and the mind registers that the new material belonged to the larger shape all along. That moment of fit is the reward.</p>
+    <p>One possibility, and here I am following Schmidhuber, is that the feeling tracks how fast a model improves, more than how much order is already there. Beauty may mark compression progress: the moment a model expands without breaking. The compressions that stay beautiful tend to be the ones simple enough to grasp, rich enough to keep exploring, and useful enough to predict the next moment. This is suggestive, and far from settled &mdash; the older inverted-U results on novelty and complexity, from Berlyne onward, hold in some domains and fray in others &mdash; so the word <em>may</em> is load-bearing.</p>
+    <p>That signal can lie. A myth can be beautiful. A propaganda symbol can be elegant. A conspiracy theory can feel like a key turning in a lock. Beauty is evidence that a compression fits the mind, and a compression can fit the mind while missing the world.</p>
+  </section>
+
+  <section class="scene" style="background-image:url('fptm-assets/interlude-3.webp')">
+    <p class="kicker k-blue"><span class="dot"></span>Reality</p>
+    <h2>When is a pattern real?</h2>
+    <p>A pattern earns warrant when independent minds can recover it and use it to predict, to act, and to be corrected. Newtonian mechanics was superseded and is still not fake. Diagnostic categories are messy and still not imaginary. Musical intervals are read through culture, and the frequency ratios underneath them are no hallucination.</p>
+    <p>Whether that recoverability <em>constitutes</em> a pattern&rsquo;s reality or merely <em>reveals</em> it, I leave open. It may be a separate realm, it may be part of the pattern itself, it may be both. A hidden planet was real before anyone detected it; a private pain is real before anyone else can recover it &mdash; and in each case how we would ever know stays tangled with what is there. I would rather hold the question than fake an answer.</p>
+    <p>The test does its work even with the metaphysics open. Science and propaganda both compress the world; the difference lives in what each does next. Good compression lets reality correct it; bad compression explains the correction away.</p>
+  </section>
+
+  <section class="scene" style="background-image:url('fptm-assets/interlude-exist.webp')">
+    <p class="kicker k-purp"><span class="dot"></span>Existence</p>
+    <h2>A stronger reading</h2>
+    <p>There is a bolder version of all this, and I want to flag it as a reading and hold it loosely. On the strong version, to exist is to be a pattern. What resists all compression is noise &mdash; pure randomness, with no description shorter than itself. Chaos is a different animal: a short rule whose long run still outruns prediction. Anything you can point to at all is already compressible enough to point at.</p>
+    <p>Time fits the same picture, and here the debt is to Whitehead. On this reading a form is a timeless possibility, and time is the dimension in which it becomes actual and embodied &mdash; what Whitehead called the form&rsquo;s <em>ingression</em> into matter. An agent is what lets a timeless shape unfold through action. Whether this is ontology or only a useful lens is the open question from the last section, carried one level deeper.</p>
+  </section>
+
+  <section class="scene" style="background-image:url('fptm-assets/interlude-4.webp')">
+    <p class="kicker k-mint"><span class="dot"></span>Ideas</p>
+    <h2>Ideologies behave like attractors too</h2>
+    <p>Ideas live in minds and travel between them, and some of them behave like attractors. An ideology compresses a mess of experience into one simple shape, spreads, rewards belonging, punishes doubt, and explains its own failures by demanding more of itself. <em>We are pure and they are corrupt. Everything wrong comes from them. Doubt is betrayal.</em> That is a very cheap compression. It accounts for a great deal with one brutal rule, which is exactly what makes it attractive, and it stays false and self-sealing the whole time.</p>
+    <p>Authoritarian ultranationalist ideologies &mdash; fascism, Nazism, and contemporary Russian fascism (<em>&#x440;&#x430;&#x448;&#x438;&#x437;&#x43c;</em>, the self-justifying militarism behind Russia&rsquo;s war on Ukraine, which is how Timothy Snyder reads the present Russian state) &mdash; behave like pathological attractors in idea-space, and reading them that way explains their stickiness. They hand a believer identity, an enemy, an explanation, and a mission in a single move. Their core pathology is that they are self-sealing: correction is reinterpreted as persecution, doubt as betrayal, and failure as proof that the doctrine has not yet been applied completely enough.</p>
+  </section>
+
+  <section class="scene" style="background-image:url('fptm-assets/interlude-5.webp')">
+    <p class="kicker k-purp"><span class="dot"></span>Selection</p>
+    <h2>Which patterns should we realize?</h2>
+    <p>The map would be dangerous if it stopped at description, because plenty of stable patterns are worth refusing: cancer, addiction loops, torture systems, a maximizer that grinds the world into paperclips. That a pattern can exist tells you nothing about whether it should be built. That last step is a choice, and it carries values the earlier steps do not contain.</p>
+    <p>What those examples share is a particular shape: they are <strong>locally stable and globally destructive</strong>. Cancer is a cellular attractor that violates the coherence of the organism. Addiction is a reward-loop attractor that consumes the agency of the person. Fascism is a social attractor that devours plural human agency. A pattern can be perfectly stable and still be pathological if it preserves itself by destroying the larger systems that make it possible.</p>
+    <p>That a pattern can exist says nothing about whether it should be built. Which patterns are worth realizing is a separate, value-laden question, and the map does not settle it. Prediction is the floor; the choice is not in the physics.</p>
+    <p>Still, the choice falls to someone. As conscious agents we are the ones who can recognize that these patterns exist at all, and that recognition is where the duty starts: to seek them out, test them, and choose. Who, if not us?</p>
+  </section>
+
+  <section class="scene" style="background-image:url('fptm-assets/interlude-6.webp')">
+    <p class="kicker k-gold"><span class="dot"></span>Open</p>
+    <h2>Four questions I would rather keep open</h2>
+    <p class="q">Is pattern something the mind imposes, or something the world is made of?</p>
+    <p class="q">Is there a real threshold where &ldquo;agent&rdquo; begins, or only a smooth axis with no line on it?</p>
+    <p class="q">Is beauty the felt signature of a form arriving in a mind, the same event described from the inside?</p>
+    <p class="q">Is logic an outer frame on the space of patterns, or the deepest pattern of all, the one the whole ladder grows from?</p>
+  </section>
+
+  <section class="scene" style="background-image:url('fptm-assets/interlude-7.webp')">
+    <p class="kicker k-mint"><span class="dot"></span>Neighbors</p>
+    <h2>Where this sits</h2>
+    <p>This map does not review the work it leans on, but it should at least point. The language of attractors and state spaces is nonlinear dynamics. The idea of a pattern as a short description runs from Shannon&rsquo;s entropy through Kolmogorov, Solomonoff, and minimum description length. The picture of development as movement through constrained valleys is Waddington&rsquo;s, now redrawn with dynamical-systems tools. Agency as prediction and regulation owes to cybernetics and to Friston&rsquo;s free-energy principle; cognition below the brain, to Levin&rsquo;s bioelectric cells. Beauty as learnable surprise is Berlyne and Schmidhuber. The darker chapter &mdash; how ideas spread, harden, and turn self-sealing &mdash; draws on Dawkins, Arendt, Adorno, Hoffer, and Snyder. The Platonic temptation is Plato by way of Whitehead and Penrose. Full citations are below.</p>
+  </section>
+
+  <div class="close">
+    <p>So pattern alone settles nothing. A pattern is scientifically interesting when it is compressible, stable, and open to correction; biological when it is embodied and maintained; agentic when it is defended; mental when it can model patterns it does not yet have; and dangerous when it seals itself off from correction. The job runs past finding patterns: test them, then choose which to build &mdash; and the choosing carries values the physics does not.</p>
+    <p>This map is one of those patterns: a compression that fits the mind, which is the exact thing it warns about. So treat it the way it asks you to treat any compression&mdash;<span class="mark">test it against reality and drop what fails.</span></p>
+  </div>
+
+  <section class="sources">
+    <p class="kicker k-mint"><span class="dot"></span>Sources</p>
+    <h2>The shoulders this stands on</h2>
+    <p class="note">A working essay that leans on real work. Where a claim belongs to someone, the credit is here.</p>
+
+    <h3>Dynamical systems &amp; form</h3>
+    <ul>
+      <li>Strogatz, S. H. <cite>Nonlinear Dynamics and Chaos</cite> (1994). Attractors, state space, bifurcations, the difference between chaos and noise.</li>
+      <li>Waddington, C. H. <cite>The Strategy of the Genes</cite> (1957). The epigenetic landscape; development as constrained valleys.</li>
+      <li>Bhattacharya, S. et al. &ldquo;A deterministic map of Waddington&rsquo;s epigenetic landscape for cell fate specification.&rdquo; <cite>BMC Systems Biology</cite> (2011).</li>
+      <li>Ferrell, J. E. &ldquo;Bistability, bifurcations, and Waddington&rsquo;s epigenetic landscape.&rdquo; <cite>Current Biology</cite> (2012).</li>
+      <li>Thom, R. <cite>Structural Stability and Morphogenesis</cite> (1972). Catastrophe theory; sudden change of form under smooth parameters.</li>
+    </ul>
+
+    <h3>Information &amp; compression</h3>
+    <ul>
+      <li>Shannon, C. E. &ldquo;A Mathematical Theory of Communication.&rdquo; <cite>Bell System Technical Journal</cite> (1948). Entropy, redundancy, noise.</li>
+      <li>Kolmogorov, A. N. &ldquo;Three approaches to the quantitative definition of information&rdquo; (1965). Algorithmic complexity, the shortest program.</li>
+      <li>Solomonoff, R. J. &ldquo;A Formal Theory of Inductive Inference&rdquo; (1964). Universal induction.</li>
+      <li>Rissanen, J. &ldquo;Modeling by shortest data description.&rdquo; <cite>Automatica</cite> (1978). Minimum description length.</li>
+      <li>Schmidhuber, J. &ldquo;Driven by Compression Progress&rdquo; (2008). Curiosity, beauty, and surprise as the felt reward of better compression.</li>
+    </ul>
+
+    <h3>Agency, prediction &amp; regulation</h3>
+    <ul>
+      <li>Conant, R. C., &amp; Ashby, W. R. &ldquo;Every good regulator of a system must be a model of that system&rdquo; (1970).</li>
+      <li>Friston, K. &ldquo;The free-energy principle: a unified brain theory?&rdquo; <cite>Nature Reviews Neuroscience</cite> (2010).</li>
+      <li>Parr, T., Pezzulo, G., &amp; Friston, K. <cite>Active Inference</cite> (2022).</li>
+      <li>Kirchhoff, M. et al. &ldquo;The Markov blankets of life.&rdquo; <cite>J. Royal Society Interface</cite> (2018).</li>
+    </ul>
+
+    <h3>Basal cognition &amp; bioelectricity</h3>
+    <ul>
+      <li>Levin, M. &ldquo;Bioelectric signaling: reprogrammable circuits underlying embryogenesis, regeneration, and cancer.&rdquo; <cite>Cell</cite> (2021).</li>
+      <li>Levin, M. &ldquo;Bioelectric networks: the cognitive glue enabling evolutionary scaling.&rdquo; <cite>Animal Cognition</cite> (2023).</li>
+      <li>Levin, M., &amp; Dennett, D. &ldquo;Cognition all the way down.&rdquo; <cite>Aeon</cite> (2020).</li>
+    </ul>
+
+    <h3>Beauty &amp; aesthetics</h3>
+    <ul>
+      <li>Berlyne, D. E. <cite>Aesthetics and Psychobiology</cite> (1971). Arousal, novelty, complexity, the inverted-U.</li>
+      <li>Marin, M. M. et al. &ldquo;Berlyne Revisited.&rdquo; <cite>Frontiers in Human Neuroscience</cite> (2016). Why the evidence is mixed.</li>
+      <li>Chmiel, A., &amp; Schubert, E. &ldquo;Back to the inverted-U for music preference.&rdquo; <cite>Psychology of Music</cite> (2017).</li>
+    </ul>
+
+    <h3>Ideas, ideology &amp; authoritarianism</h3>
+    <ul>
+      <li>Dawkins, R. <cite>The Selfish Gene</cite> (1976). The origin of &ldquo;meme&rdquo;; treat as heuristic, not settled science of culture.</li>
+      <li>Homer-Dixon, T. et al. &ldquo;A Complex Systems Approach to the Study of Ideology.&rdquo; <cite>J. Social and Political Psychology</cite> (2013).</li>
+      <li>Arendt, H. <cite>The Origins of Totalitarianism</cite> (1951).</li>
+      <li>Adorno, T. W. et al. <cite>The Authoritarian Personality</cite> (1950).</li>
+      <li>Hoffer, E. <cite>The True Believer</cite> (1951).</li>
+      <li>Snyder, T. &ldquo;We Should Say It. Russia Is Fascist&rdquo; (2022). On <em>&#x440;&#x430;&#x448;&#x438;&#x437;&#x43c;</em> / ruscism; offered as a political-historical diagnosis, and contested as a taxonomic label.</li>
+    </ul>
+
+    <h3>Forms &amp; metaphysics</h3>
+    <ul>
+      <li>Plato. <cite>Phaedo</cite>, <cite>Republic</cite>, <cite>Parmenides</cite>, <cite>Timaeus</cite>. The theory of Forms.</li>
+      <li>Whitehead, A. N. <cite>Process and Reality</cite> (1929). Eternal objects and &ldquo;ingression.&rdquo;</li>
+      <li>Penrose, R. <cite>The Road to Reality</cite> (2004). A modern mathematical Platonism.</li>
+    </ul>
+  </section>
+
+  <footer>From Pattern to Mind &middot; a thinking artifact, revised against criticism more than once.</footer>
+</div>
+
+</main>
+
+<script>
+(function(){
+  var frame = document.getElementById('mapFrame');
+  var pz = document.getElementById('panzoom');
+  if(!frame || !pz) return;
+  var svg = pz.querySelector('svg');
+  if(!svg) return;
+
+  // Zoom by driving the SVG viewBox (true vector zoom: stays crisp at any scale),
+  // not a CSS transform (which rasterizes the SVG and blurs when scaled up).
+  var BASE = {w:2080, h:1300};
+  var RATIO = BASE.h / BASE.w;
+  var MINW = BASE.w / 60;            // max zoom 60x
+  var view = {x:0, y:0, w:BASE.w, h:BASE.h};
+
+  function apply(){ svg.setAttribute('viewBox', view.x + ' ' + view.y + ' ' + view.w + ' ' + view.h); }
+
+  function clamp(){
+    view.w = Math.min(BASE.w, Math.max(MINW, view.w));
+    view.h = view.w * RATIO;
+    view.x = Math.max(0, Math.min(BASE.w - view.w, view.x));
+    view.y = Math.max(0, Math.min(BASE.h - view.h, view.y));
+  }
+
+  function zoomAt(clientX, clientY, factor){
+    var r = svg.getBoundingClientRect();
+    var fx = (clientX - r.left) / r.width;
+    var fy = (clientY - r.top) / r.height;
+    var px = view.x + fx * view.w, py = view.y + fy * view.h;
+    var nw = Math.min(BASE.w, Math.max(MINW, view.w / factor));
+    var nh = nw * RATIO;
+    view.x = px - fx * nw;
+    view.y = py - fy * nh;
+    view.w = nw; view.h = nh;
+    clamp(); apply();
+  }
+
+  function reset(){ view = {x:0, y:0, w:BASE.w, h:BASE.h}; apply(); }
+  function touched(){ frame.classList.add('touched'); }
+
+  frame.addEventListener('wheel', function(e){
+    e.preventDefault(); touched();
+    zoomAt(e.clientX, e.clientY, e.deltaY < 0 ? 1.12 : 1/1.12);
+  }, {passive:false});
+
+  var pointers = new Map();
+  var panning = false, sx = 0, sy = 0, svx = 0, svy = 0, lastDist = 0;
+
+  frame.addEventListener('pointerdown', function(e){
+    if(e.target.closest('.mapctl')) return;
+    touched();
+    pointers.set(e.pointerId, {x:e.clientX, y:e.clientY});
+    frame.setPointerCapture(e.pointerId);
+    if(pointers.size === 1){
+      panning = true; sx = e.clientX; sy = e.clientY; svx = view.x; svy = view.y;
+      frame.classList.add('grabbing');
+    } else if(pointers.size === 2){
+      panning = false;
+      var p = Array.from(pointers.values());
+      lastDist = Math.hypot(p[0].x - p[1].x, p[0].y - p[1].y);
+    }
+  });
+
+  frame.addEventListener('pointermove', function(e){
+    if(!pointers.has(e.pointerId)) return;
+    pointers.set(e.pointerId, {x:e.clientX, y:e.clientY});
+    if(pointers.size === 2){
+      var p = Array.from(pointers.values());
+      var d = Math.hypot(p[0].x - p[1].x, p[0].y - p[1].y);
+      var mx = (p[0].x + p[1].x) / 2, my = (p[0].y + p[1].y) / 2;
+      if(lastDist) zoomAt(mx, my, d / lastDist);
+      lastDist = d;
+    } else if(panning){
+      var r = svg.getBoundingClientRect();
+      var k = view.w / r.width;
+      view.x = svx - (e.clientX - sx) * k;
+      view.y = svy - (e.clientY - sy) * k;
+      clamp(); apply();
+    }
+  });
+
+  function release(e){
+    if(pointers.has(e.pointerId)) pointers.delete(e.pointerId);
+    if(pointers.size < 2) lastDist = 0;
+    if(pointers.size === 0){ panning = false; frame.classList.remove('grabbing'); }
+  }
+  frame.addEventListener('pointerup', release);
+  frame.addEventListener('pointercancel', release);
+
+  frame.addEventListener('dblclick', function(e){ e.preventDefault(); reset(); });
+
+  frame.querySelectorAll('.mapctl button').forEach(function(b){
+    b.addEventListener('click', function(e){
+      e.stopPropagation(); touched();
+      var z = b.getAttribute('data-z');
+      if(z === 'reset'){ reset(); return; }
+      var r = svg.getBoundingClientRect();
+      zoomAt(r.left + r.width/2, r.top + r.height/2, z === 'in' ? 1.35 : 1/1.35);
+    });
+  });
+
+  apply();
+})();
+</script>
+</body>
+</html>
