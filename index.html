@@ -64,7 +64,7 @@ h1 em{font-style:italic; color:var(--mint); font-weight:380}
 
 /* body */
 p{margin:0 0 24px}
-.lede{font-size:22.5px; color:var(--ink)}
+.lede{font-size:22.5px; color:var(--ink); margin:0 0 24px}
 .lede::first-letter{
   font-family:"Fraunces",serif; font-weight:420; float:left; font-size:78px;
   line-height:.78; padding:8px 14px 0 0; color:var(--blue);
@@ -115,8 +115,8 @@ figcaption{color:var(--mute); font-size:15.5px; line-height:1.6; margin:18px 6px
   border-radius:18px; background-size:cover; background-position:center; background-repeat:no-repeat;
   border:1px solid var(--line); box-shadow:0 30px 80px -50px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.04)}
 .scene::before{content:""; position:absolute; inset:0; border-radius:18px; pointer-events:none;
-  background:linear-gradient(180deg, rgba(8,12,26,.6), rgba(8,12,26,.48) 45%, rgba(8,12,26,.6)),
-             radial-gradient(130% 100% at 50% 46%, rgba(8,12,26,.55), transparent 78%)}
+  background:linear-gradient(180deg, rgba(8,12,26,.78), rgba(8,12,26,.66) 45%, rgba(8,12,26,.78)),
+             radial-gradient(130% 100% at 50% 46%, rgba(8,12,26,.72), transparent 78%)}
 .scene > *{position:relative; z-index:1}
 .scene p, .scene .q, .scene .ladder span{color:#DCE3F4}
 .scene h2{text-shadow:0 2px 18px rgba(4,7,18,.92)}
@@ -184,6 +184,150 @@ body.mode-full .v-short{display:none}
 .cardtoggle::after{font-size:18px; line-height:1}
 .card.is-short .cardtoggle::after{content:"+"}
 .card.is-full .cardtoggle::after{content:"\2212"}
+
+/* Clickable SVG nodes */
+.map-node {
+  cursor: pointer;
+  transition: fill 0.2s, stroke 0.2s, stroke-width 0.2s;
+}
+.map-node:hover {
+  fill: #141c38 !important;
+  stroke: var(--mint) !important;
+  stroke-width: 2.6px !important;
+}
+svg text {
+  pointer-events: none;
+}
+
+/* Modal overlay with glassmorphism */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(4, 7, 18, 0.6);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.28s ease;
+  padding: 24px;
+}
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Modal Content Card */
+.modal-content {
+  position: relative;
+  width: 100%;
+  max-width: 760px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  box-shadow: 0 40px 90px -20px rgba(0,0,0,0.9), inset 0 1px 0 rgba(255,255,255,0.04);
+  transform: translateY(24px) scale(0.97);
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.32s ease;
+  overflow: hidden;
+}
+.modal-content::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(8,12,26,0.8), rgba(8,12,26,0.68) 45%, rgba(8,12,26,0.8)),
+              radial-gradient(130% 100% at 50% 46%, rgba(8,12,26,0.75), transparent 78%);
+}
+.modal-overlay.active .modal-content {
+  transform: translateY(0) scale(1);
+}
+
+/* Modal Body */
+.modal-body {
+  position: relative;
+  z-index: 1;
+  padding: 48px 38px 12px;
+}
+.modal-body p {
+  color: #DCE3F4;
+}
+
+/* Close button */
+.modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 10;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: rgba(8,12,26,0.5);
+  color: var(--soft);
+  font-size: 20px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+.modal-close:hover {
+  border-color: var(--mint);
+  color: var(--ink);
+  background: rgba(94,234,212,0.08);
+}
+.modal-content.is-short .card-full { display: none; }
+.modal-content.is-full .card-short { display: none; }
+
+/* Shift cardtoggle left when inside modal to not overlap close button */
+.modal-content .cardtoggle {
+  right: 62px;
+  top: 18px;
+  width: 32px;
+  height: 32px;
+}
+
+/* Modal navigation footer */
+.modal-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+  padding: 0 38px 38px;
+  z-index: 2;
+  position: relative;
+}
+.modal-nav button {
+  background: rgba(14, 21, 48, 0.6);
+  border: 1px solid var(--line);
+  color: var(--soft);
+  padding: 8px 18px;
+  border-radius: 99px;
+  cursor: pointer;
+  font-family: "Fraunces", serif;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+.modal-nav button:hover {
+  border-color: var(--mint);
+  color: var(--ink);
+  background: rgba(94, 234, 212, 0.08);
+}
+.modal-nav button.nav-disabled {
+  opacity: 0;
+  pointer-events: none;
+}
 </style>
 <style>
 /* language switch: pinned, unobtrusive, top-right */
@@ -214,7 +358,7 @@ body.mode-full .v-short{display:none}
 <header class="hero reveal d1">
   <p class="eyebrow" data-i18n="eyebrow">A thinking map &middot; philosophy of mind</p>
   <h1 data-i18n="h1">From Pattern <em>to</em> Mind</h1>
-  <p class="dek" data-i18n="dek">A working model of how structure becomes stable, then alive, then felt, and how the same machinery can turn an idea into a trap.</p>
+  <p class="dek" data-i18n="dek">A model of how structure becomes stable, then alive, then sentient. And how that same machinery turns an idea into a trap.</p>
 </header>
 
 <div class="modeswitch reveal d2" role="group" aria-label="Reading length">
@@ -225,8 +369,8 @@ body.mode-full .v-short{display:none}
 <div class="rule reveal d2"></div>
 
 <div class="col">
-  <p class="lede reveal d2 v-short" data-i18n="lede.short">I built this map to think with. The wager: take pattern as the primitive and see how far one ladder climbs &mdash; from bare structure, to agents that defend it, to minds that model what they could become. A pattern is anything you can describe more briefly than its instances. Where the climb stops says as much as where it holds.</p>
-  <p class="lede reveal d2 v-full" data-i18n="lede.full">I have been building this map to think with. The wager is plain: I take pattern as the primitive and see how far one ladder climbs, from bare structure to agents that defend it. Where the climb stops is as informative as where it holds. Many things we keep in separate drawers &mdash; physical form, biological agency, beauty, mind, ideology &mdash; turn out to live on that ladder. A pattern, here, is a regularity you can describe more briefly than the list of its instances, relative to some model or code. A sine wave, a crystal lattice, an octave, a morphogenetic field: each is a short description standing in for something that would otherwise take forever to write down.</p>
+  <div class="lede reveal d2 v-short" data-i18n="lede.short">This map is a guide from the simple patterns of nature to the human mind and the traps of ideology. I take pattern &mdash; the capacity to compress information &mdash; as the primitive, and follow how far one ladder climbs: from a crystal, to a cell that defends itself, to a mind that plans ahead.<br><br><strong>How to read the map:</strong> move left to right along the main spine (from Pattern to Mind), or tap the cards to open the full essays. To begin, pick the first card, &ldquo;The ladder.&rdquo;</div>
+  <div class="lede reveal d2 v-full" data-i18n="lede.full">I built this map to solve one problem: we are used to keeping physical structures, living organisms, art, and ideologies in separate drawers, and that makes the picture of the world feel fragmented. My wager is to take <strong>pattern</strong> as the fundamental unit and trace how far one ladder climbs.<br><br><strong>From pattern to mind, in the life of a single cell:</strong><ul><li><b>Pattern:</b> chemical concentrations in water &mdash; a bare regularity.</li><li><b>Attractor:</b> the chemistry loops back on itself and holds steady over time.</li><li><b>Form:</b> a membrane walls that reaction off from the surrounding chaos, embodying it in matter.</li><li><b>Agency:</b> the cell pumps ions, patches its membrane, and swims toward nutrients to protect its form.</li><li><b>Mind:</b> the organism builds a model of its environment and reckons with obstacles before they arrive.</li></ul><br>Where the climb stops matters as much as the rungs that bear the weight. A richer inner model buys more agency, and it also opens room for error: the mind is easily fooled by an elegant compression &mdash; a conspiracy theory, a dogma &mdash; that settles in beautifully while never touching the real world.</div>
 </div>
 
 <figure class="diagram reveal d2">
@@ -659,19 +803,19 @@ body.mode-full .v-short{display:none}
   <button type="button" class="cardtoggle" aria-label="Toggle detail"></button>
   <p class="kicker k-blue" data-i18n="k.compute"><span class="dot"></span>Compute</p>
   <div class="card-short" data-i18n="compute.short"><h2>Substrate-general logic</h2><p>The same logic runs on ion channels, transistors, or interfering waves; the universe still charges rent in energy, speed, and error. Even non-neural cells compute &mdash; Levin&rsquo;s bioelectric signals help decide what body to build &mdash; though that means goal-directed regulation, not thought. More compute searches more of the pattern-space, finds deeper compressions, and buys more agency.</p></div>
-  <div class="card-full" data-i18n="compute.full"><h2>Substrate-general logic</h2><p>Computation is substrate-general: the same operations run on ion channels, on transistors, or on interfering waves, where resonance adds and cancellation subtracts. The logic is portable; the universe charges rent. Every real machine pays its substrate&rsquo;s bill in energy, speed, and error.</p><p>So computation reaches well past the brain. Following Levin&rsquo;s work on bioelectricity, even non-neural cells compute with electrical signals, and that signalling helps decide what body to build &mdash; the thread that runs down from thought to morphology. None of this means a cell reasons or feels; it means goal-directed regulation over a space of problems, cognition in the basal sense and nothing grander. And the search has structure: patterns prune the space, so a system explores the allowed region rather than the whole of it, which is what keeps it cheap enough to run.</p><p>More of it changes what is reachable. More compute means more of the pattern-space searched, which means deeper compressions found and more value pulled out &mdash; and more agency too, since a richer model answers more kinds of disturbance. The scaling looks the same whether the substrate is a chip or an organism. Compute does not invent possibilities; it searches, realizes, and constrains the ones the substrate already allows.</p></div>
+  <div class="card-full" data-i18n="compute.full"><h2>Substrate-general logic</h2><p>Computation is substrate-general: the same operations run on ion channels, on transistors, or on interfering waves, where resonance adds and cancellation subtracts. The logic is portable; the universe charges rent. Every real machine pays its substrate&rsquo;s bill in energy, speed, and error.</p><p>Computation happens beyond the brain too. Following Levin&rsquo;s work on bioelectricity, even cells without synapses use electrical signals to determine the body&rsquo;s form. This is the thread from thought to morphology. The cell regulates its states in a problem space without reasoning or feeling. This is cognition in its simplest, basic form. The search has structure: past patterns prune the options, directing the system along an allowed corridor. This reduces energy costs, making computation possible.</p><p>More of it changes what is reachable. More compute means more of the pattern-space searched, which means deeper compressions found and more value pulled out &mdash; and more agency too, since a richer model answers more kinds of disturbance. The scaling looks the same whether the substrate is a chip or an organism. Compute does not invent possibilities; it searches, realizes, and constrains the ones the substrate already allows.</p></div>
   </section>
   <section class="scene card is-short" style="background-image:url('fptm-assets/interlude-2.webp')">
   <button type="button" class="cardtoggle" aria-label="Toggle detail"></button>
   <p class="kicker k-mint" data-i18n="k.beauty"><span class="dot"></span>Beauty</p>
   <div class="card-short" data-i18n="beauty.short"><h2>Beauty as compression progress</h2><p>Repetition bores and noise says nothing; beauty lives between, where a new pattern still fits the larger one. A theme states itself, varies, resolves, and the fit is the reward. Following Schmidhuber, the feeling may track compression progress: a model expanding without breaking. The signal can lie &mdash; a myth, a slogan, a conspiracy can all feel beautiful &mdash; because a compression can fit the mind while missing the world.</p></div>
-  <div class="card-full" data-i18n="beauty.full"><h2>Beauty as compression progress</h2><p>Repetition alone is dull. <em>AAAAAA</em> is maximally compressible and says nothing. Noise sits at the other end, with no compression available at all. The interesting zone lies between them, and music lives there. What lives there is meaningful surprise, and the word <em>meaningful</em> is doing the work: a new pattern that still fits the larger pattern. Mere novelty will not do, since noise is novel too and fits nothing. A theme repeats, so the mind builds a model. The theme varies, which creates tension. The variation resolves, and the mind registers that the new material belonged to the larger shape all along. That moment of fit is the reward.</p><p>One possibility, and here I am following Schmidhuber, is that the feeling tracks how fast a model improves, more than how much order is already there. Beauty may mark compression progress: the moment a model expands without breaking. The compressions that stay beautiful tend to be the ones simple enough to grasp, rich enough to keep exploring, and useful enough to predict the next moment. This is suggestive, and far from settled &mdash; the older inverted-U results on novelty and complexity, from Berlyne onward, hold in some domains and fray in others &mdash; so the word <em>may</em> is load-bearing.</p><p>That signal can lie. A myth can be beautiful. A propaganda symbol can be elegant. A conspiracy theory can feel like a key turning in a lock. Beauty is evidence that a compression fits the mind, and a compression can fit the mind while missing the world.</p></div>
+  <div class="card-full" data-i18n="beauty.full"><h2>Beauty as compression progress</h2><p>Repetition alone is dull. <em>AAAAAA</em> is maximally compressible and says nothing. Noise sits at the other end, with no compression available at all. The interesting zone lies between them, and music lives there. What lives there is meaningful surprise, and the word <em>meaningful</em> is doing the work: a new pattern that still fits the larger pattern. Mere novelty will not do, since noise is novel too and fits nothing. A theme repeats, so the mind builds a model. The theme varies, which creates tension. The variation resolves, and the mind registers that the new material belonged to the larger shape all along. That moment of fit is the reward.</p><p>One possibility, and here I am following Schmidhuber, is that the feeling tracks how fast a model improves, more than how much order is already there. Beauty may mark compression progress: the moment a model expands without breaking. The compressions that stay beautiful tend to be the ones simple enough to grasp, rich enough to keep exploring, and useful enough to predict the next moment. This is an assumption: the classic inverted-U curves that link interest with novelty and complexity work only in specific domains.</p><p>That signal can lie. A myth can be beautiful. A propaganda symbol can be elegant. A conspiracy theory can feel like a key turning in a lock. Beauty is evidence that a compression fits the mind, and a compression can fit the mind while missing the world.</p></div>
   </section>
   <section class="scene card is-short" style="background-image:url('fptm-assets/interlude-3.webp')">
   <button type="button" class="cardtoggle" aria-label="Toggle detail"></button>
   <p class="kicker k-blue" data-i18n="k.reality"><span class="dot"></span>Reality</p>
   <div class="card-short" data-i18n="reality.short"><h2>When is a pattern real?</h2><p>A pattern earns warrant when independent minds can recover it and use it to predict, act, and be corrected. Whether that recoverability makes a pattern real or only reveals it, I leave open. Science and propaganda both compress the world; good compression lets reality correct it, and bad compression explains the correction away.</p></div>
-  <div class="card-full" data-i18n="reality.full"><h2>When is a pattern real?</h2><p>A pattern earns warrant when independent minds can recover it and use it to predict, to act, and to be corrected. Newtonian mechanics was superseded and is still not fake. Diagnostic categories are messy and still not imaginary. Musical intervals are read through culture, and the frequency ratios underneath them are no hallucination.</p><p>Whether that recoverability <em>constitutes</em> a pattern&rsquo;s reality or merely <em>reveals</em> it, I leave open. It may be a separate realm, it may be part of the pattern itself, it may be both. A hidden planet was real before anyone detected it; a private pain is real before anyone else can recover it &mdash; and in each case how we would ever know stays tangled with what is there. I would rather hold the question than fake an answer.</p><p>The test does its work even with the metaphysics open. Science and propaganda both compress the world; the difference lives in what each does next. Good compression lets reality correct it; bad compression explains the correction away.</p></div>
+  <div class="card-full" data-i18n="reality.full"><h2>When is a pattern real?</h2><p>A pattern earns warrant when independent minds can recover it and use it to predict, to act, and to be corrected. Newtonian mechanics was superseded and is still not fake. Diagnostic categories are messy and still not imaginary. Musical intervals are read through culture, and the frequency ratios underneath them are no hallucination.</p><p>Whether that recoverability <em>constitutes</em> a pattern&rsquo;s reality or merely <em>reveals</em> it, I leave open. It may be a separate realm, it may be part of the pattern itself, it may be both. A hidden planet was real before anyone detected it; a private pain is real before anyone else can recover it &mdash; and in each case how we would ever know stays tangled with what is there. I would rather hold the question than fake an answer.</p><p>The test works regardless of where you land on the metaphysics. Science and propaganda both compress the world; the difference lives in what each does next. Good compression lets reality correct it; bad compression explains the correction away.</p></div>
   </section>
   <section class="scene card is-short" style="background-image:url('fptm-assets/interlude-exist.webp')">
   <button type="button" class="cardtoggle" aria-label="Toggle detail"></button>
@@ -689,11 +833,11 @@ body.mode-full .v-short{display:none}
   <button type="button" class="cardtoggle" aria-label="Toggle detail"></button>
   <p class="kicker k-purp" data-i18n="k.selection"><span class="dot"></span>Selection</p>
   <div class="card-short" data-i18n="selection.short"><h2>Which patterns should we realize?</h2><p>Plenty of stable patterns are worth refusing &mdash; cancer, addiction, fascism &mdash; locally stable and globally destructive, holding themselves together by eating the systems that hold them. That a pattern can exist says nothing about whether to build it. The choice is value-laden, and it falls to us.</p></div>
-  <div class="card-full" data-i18n="selection.full"><h2>Which patterns should we realize?</h2><p>The map would be dangerous if it stopped at description, because plenty of stable patterns are worth refusing: cancer, addiction loops, torture systems, a maximizer that grinds the world into paperclips. That a pattern can exist tells you nothing about whether it should be built. That last step is a choice, and it carries values the earlier steps do not contain.</p><p>What those examples share is a particular shape: they are <strong>locally stable and globally destructive</strong>. Cancer is a cellular attractor that violates the coherence of the organism. Addiction is a reward-loop attractor that consumes the agency of the person. Fascism is a social attractor that devours plural human agency. A pattern can be perfectly stable and still be pathological if it preserves itself by destroying the larger systems that make it possible.</p><p>That a pattern can exist says nothing about whether it should be built. Which patterns are worth realizing is a separate, value-laden question, and the map does not settle it. Prediction is the floor; the choice is not in the physics.</p><p>Still, the choice falls to someone. As conscious agents we are the ones who can recognize that these patterns exist at all, and that recognition is where the duty starts: to seek them out, test them, and choose. Who, if not us?</p></div>
+  <div class="card-full" data-i18n="selection.full"><h2>Which patterns should we realize?</h2><p>The map would be incomplete if it stopped at description, because plenty of stable patterns are worth refusing: cancer, addiction loops, torture systems, a maximizer that grinds the world into paperclips. That a pattern can exist tells you nothing about whether it should be built. That last step is a choice, and it carries values the earlier steps do not contain.</p><p>What those examples share is a particular shape: they are <strong>locally stable and globally destructive</strong>. Cancer is a cellular attractor that violates the coherence of the organism. Addiction is a reward-loop attractor that consumes the agency of the person. Fascism is a social attractor that devours plural human agency. A pattern can be perfectly stable and still be pathological if it preserves itself by destroying the larger systems that make it possible.</p><p>That a pattern can exist says nothing about whether it should be built. Which patterns are worth realizing is a separate question we haven't explored here yet. Prediction is the floor; the choice is not in the physics.</p><p>Still, the choice falls to someone. As conscious agents we are the ones who can recognize that these patterns exist at all, and that recognition is where the duty starts: to seek them out, test them, and choose. Who, if not us?</p></div>
   </section>
   <section class="scene" style="background-image:url('fptm-assets/interlude-6.webp')">
   <p class="kicker k-gold" data-i18n="k.open"><span class="dot"></span>Open</p>
-  <div data-i18n="open.body"><h2>Four questions I keep open</h2><p class="q">Is pattern something the mind imposes, or something the world is made of?</p><p class="q">Is there a real threshold where &ldquo;agent&rdquo; begins, or only a smooth axis with no line on it?</p><p class="q">Is beauty the felt signature of a form arriving in a mind, the same event described from the inside?</p><p class="q">Is logic an outer frame on the space of patterns, or the deepest pattern of all, the one the whole ladder grows from?</p></div>
+  <div data-i18n="open.body"><h2>Four questions I keep open</h2><p class="q">Is pattern a subjective grid the mind throws over reality, or the objective fabric the world is woven from?</p><p class="q">Is there a sharp boundary where &ldquo;agency&rdquo; begins, or only a continuous spectrum with no clean line on it?</p><p class="q">Is beauty the direct sensation of a form settling into a mind &mdash; the very same event lived from the inside?</p><p class="q">Is logic an outer frame on the space of all possible patterns, or the deepest first-pattern of all, the one every rung of this ladder grows from?</p></div>
   </section>
   <section class="scene card is-short" style="background-image:url('fptm-assets/interlude-7.webp')">
   <button type="button" class="cardtoggle" aria-label="Toggle detail"></button>
@@ -712,6 +856,18 @@ body.mode-full .v-short{display:none}
 <footer data-i18n="footer">From Pattern to Mind &middot; a thinking artifact, revised against criticism more than once.</footer>
 
 </main>
+
+<!-- Modal overlay with glassmorphism -->
+<div class="modal-overlay" id="cardModal" aria-hidden="true" role="dialog">
+  <div class="modal-content" id="modalContent">
+    <button type="button" class="modal-close" id="modalClose" aria-label="Close modal">&times;</button>
+    <div class="modal-body" id="modalBody"></div>
+    <div class="modal-nav">
+      <button type="button" id="modalPrev" class="modal-nav-btn">← <span class="nav-title"></span></button>
+      <button type="button" id="modalNext" class="modal-nav-btn"><span class="nav-title"></span> →</button>
+    </div>
+  </div>
+</div>
 <script>
 (function(){
   var frame = document.getElementById('mapFrame');
@@ -759,6 +915,7 @@ body.mode-full .v-short{display:none}
 
   var pointers = new Map();
   var panning = false, sx = 0, sy = 0, svx = 0, svy = 0, lastDist = 0;
+  var clickStart = {x:0, y:0, time:0};
 
   frame.addEventListener('pointerdown', function(e){
     if(e.target.closest('.mapctl')) return;
@@ -767,6 +924,9 @@ body.mode-full .v-short{display:none}
     frame.setPointerCapture(e.pointerId);
     if(pointers.size === 1){
       panning = true; sx = e.clientX; sy = e.clientY; svx = view.x; svy = view.y;
+      clickStart.x = e.clientX;
+      clickStart.y = e.clientY;
+      clickStart.time = Date.now();
       frame.classList.add('grabbing');
     } else if(pointers.size === 2){
       panning = false;
@@ -796,7 +956,26 @@ body.mode-full .v-short{display:none}
   function release(e){
     if(pointers.has(e.pointerId)) pointers.delete(e.pointerId);
     if(pointers.size < 2) lastDist = 0;
-    if(pointers.size === 0){ panning = false; frame.classList.remove('grabbing'); }
+    if(pointers.size === 0){
+      if(panning){
+        panning = false;
+        frame.classList.remove('grabbing');
+        
+        var dx = e.clientX - clickStart.x;
+        var dy = e.clientY - clickStart.y;
+        var dist = Math.hypot(dx, dy);
+        var dt = Date.now() - clickStart.time;
+        if(dist < 8 && dt < 400){
+          var node = e.target.closest('.map-node');
+          if(node){
+            var targetId = node.getAttribute('data-target');
+            if(targetId && typeof window.openCardModal === 'function'){
+              window.openCardModal(targetId);
+            }
+          }
+        }
+      }
+    }
   }
   frame.addEventListener('pointerup', release);
   frame.addEventListener('pointercancel', release);
@@ -837,20 +1016,179 @@ body.mode-full .v-short{display:none}
       var m = b.getAttribute('data-mode');
       try{ localStorage.setItem('fptm-mode', m); }catch(e){}
       setAll(m);
+      // Sync to open modal if active
+      var modalContent = document.getElementById('modalContent');
+      if(modalContent){
+        modalContent.classList.toggle('is-short', m === 'short');
+        modalContent.classList.toggle('is-full', m === 'full');
+      }
     });
   });
 
-  document.querySelectorAll('.cardtoggle').forEach(function(btn){   // per-card override
-    btn.addEventListener('click', function(e){
-      e.stopPropagation();
-      var c = btn.closest('.card');
-      var toFull = c.classList.contains('is-short');
-      c.classList.toggle('is-short', !toFull);
-      c.classList.toggle('is-full', toFull);
+  // Event delegation for card toggles (works on page cards & cloned modal cards)
+  document.addEventListener('click', function(e){
+    var btn = e.target.closest('.cardtoggle');
+    if(!btn) return;
+    e.stopPropagation();
+    var c = btn.closest('.card, .modal-content');
+    if(!c) return;
+    var toFull = c.classList.contains('is-short');
+    c.classList.toggle('is-short', !toFull);
+    c.classList.toggle('is-full', toFull);
+    
+    // Sync state between modal and original card
+    if(c.classList.contains('modal-content')){
+      if(window.currentCardId){
+        var origCard = document.getElementById('card-' + window.currentCardId);
+        if(origCard){
+          origCard.classList.toggle('is-short', !toFull);
+          origCard.classList.toggle('is-full', toFull);
+        }
+      }
+    } else {
+      var modalContent = document.getElementById('modalContent');
+      var modal = document.getElementById('cardModal');
+      if(modal && modal.classList.contains('active') && window.currentCardId === c.id.replace('card-', '')){
+        modalContent.classList.toggle('is-short', !toFull);
+        modalContent.classList.toggle('is-full', toFull);
+      }
+    }
+  });
+})();
+</script>
+
+<script>
+(function(){
+  var modal = document.getElementById('cardModal');
+  var modalContent = document.getElementById('modalContent');
+  var modalBody = document.getElementById('modalBody');
+  var modalClose = document.getElementById('modalClose');
+  var modalPrev = document.getElementById('modalPrev');
+  var modalNext = document.getElementById('modalNext');
+  
+  window.currentCardId = null;
+  var SEQUENCE = ['ladder', 'logic', 'agency', 'compute', 'beauty', 'reality', 'existence', 'ideas', 'selection'];
+
+  function openCardModal(targetId){
+    var card = document.getElementById('card-' + targetId);
+    if(!card) return;
+    
+    window.currentCardId = targetId;
+    
+    // Clear previous modal body content
+    modalBody.innerHTML = '';
+    
+    // Copy background image
+    modalContent.style.backgroundImage = card.style.backgroundImage || '';
+    
+    // Copy classes (like is-short, is-full)
+    modalContent.className = 'modal-content';
+    if(card.classList.contains('is-short')){
+      modalContent.classList.add('is-short');
+    } else {
+      modalContent.classList.add('is-full');
+    }
+    
+    // Clone all children of the card and append to modal body
+    var children = card.childNodes;
+    for(var i = 0; i < children.length; i++){
+      modalBody.appendChild(children[i].cloneNode(true));
+    }
+    
+    updateModalNav();
+    
+    // Show modal
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden'; // prevent scrolling behind modal
+  }
+
+  function closeCardModal(){
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    window.currentCardId = null;
+  }
+
+  function updateModalNav(){
+    if(!window.currentCardId) return;
+    var index = SEQUENCE.indexOf(window.currentCardId);
+    if(index >= 0){
+      if(index > 0){
+        var prevId = SEQUENCE[index - 1];
+        var prevCard = document.getElementById('card-' + prevId);
+        var prevTitle = (prevCard.querySelector('.card-short h2') || prevCard.querySelector('h2')).innerText;
+        modalPrev.querySelector('.nav-title').innerText = prevTitle;
+        modalPrev.classList.remove('nav-disabled');
+        modalPrev.setAttribute('data-target', prevId);
+      } else {
+        modalPrev.classList.add('nav-disabled');
+      }
+      if(index < SEQUENCE.length - 1){
+        var nextId = SEQUENCE[index + 1];
+        var nextCard = document.getElementById('card-' + nextId);
+        var nextTitle = (nextCard.querySelector('.card-short h2') || nextCard.querySelector('h2')).innerText;
+        modalNext.querySelector('.nav-title').innerText = nextTitle;
+        modalNext.classList.remove('nav-disabled');
+        modalNext.setAttribute('data-target', nextId);
+      } else {
+        modalNext.classList.add('nav-disabled');
+      }
+      document.querySelector('.modal-nav').style.display = 'flex';
+    } else {
+      document.querySelector('.modal-nav').style.display = 'none';
+    }
+  }
+
+  window.openCardModal = openCardModal;
+  window.closeCardModal = closeCardModal;
+
+  modalClose.addEventListener('click', closeCardModal);
+  modal.addEventListener('click', function(e){
+    if(e.target === modal) {
+      closeCardModal();
+    }
+  });
+
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') {
+      closeCardModal();
+    }
+  });
+
+  modalPrev.addEventListener('click', function(){
+    var targetId = modalPrev.getAttribute('data-target');
+    if(targetId) openCardModal(targetId);
+  });
+  modalNext.addEventListener('click', function(){
+    var targetId = modalNext.getAttribute('data-target');
+    if(targetId) openCardModal(targetId);
+  });
+
+  // Watch for language change to update nav buttons dynamically
+  document.querySelectorAll('.langswitch button').forEach(function(b){
+    b.addEventListener('click', function(){
+      setTimeout(updateModalNav, 0);
     });
   });
 })();
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
