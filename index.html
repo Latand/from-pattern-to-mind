@@ -422,14 +422,14 @@ body.mode-full .v-short{display:none}
 </g>
 <g class="dgroup" data-lang="uk" style="display:none">
 <text x="40" y="50" fill="#FFFFFF" font-size="25" font-weight="700" font-family="Georgia, serif">Від патерну до розуму</text>
-<text x="40" y="74" fill="#93A0C4" font-size="13">логіка ▸ патерн ▸ атрактор ▸ форма ▸ дієвість ▸ розум</text>
+<text x="40" y="74" fill="#93A0C4" font-size="13">логіка ▸ патерн ▸ атрактор ▸ форма ▸ агентність ▸ розум</text>
 <text x="340" y="652" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">ПАТЕРН</text>
 <text x="340" y="670" fill="#9AA6CC" font-size="11" text-anchor="middle" font-style="italic">стискуваний моделлю</text>
 <text x="720" y="652" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">АТРАКТОР</text>
 <text x="720" y="670" fill="#9AA6CC" font-size="11" text-anchor="middle" font-style="italic">стійка зона у просторі станів</text>
 <text x="1085" y="652" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">ФОРМА</text>
 <text x="1085" y="670" fill="#9AA6CC" font-size="11" text-anchor="middle" font-style="italic">атрактор, втілений у матерії</text>
-<text x="1445" y="652" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">ДІЄВІСТЬ</text>
+<text x="1445" y="652" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">АГЕНТНІСТЬ</text>
 <text x="1445" y="670" fill="#9AA6CC" font-size="11" text-anchor="middle" font-style="italic">захищений патерн</text>
 <text x="1790" y="652" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">РОЗУМ</text>
 <text x="1790" y="670" fill="#9AA6CC" font-size="11" text-anchor="middle" font-style="italic">моделює можливі патерни</text>
@@ -851,126 +851,7 @@ body.mode-full .v-short{display:none}
   });
 })();
 </script>
-<script src="i18n.js"></script>
-<script>
-(function(){
-  var btns = document.querySelectorAll('.langswitch button');
-  var svgGroups = document.querySelectorAll('svg .dgroup');
-  function setLang(l){
-    if(!I18N[l]) l='en';
-    document.documentElement.lang = l;
-    document.querySelectorAll('[data-i18n]').forEach(function(el){
-      var v = I18N[l][el.getAttribute('data-i18n')];
-      if(v != null) el.innerHTML = v;
-    });
-    svgGroups.forEach(function(g){ g.style.display = g.getAttribute('data-lang') === l ? '' : 'none'; });
-    btns.forEach(function(b){ b.classList.toggle('active', b.getAttribute('data-lang') === l); });
-    if(I18N[l]['doc.title']) document.title = I18N[l]['doc.title'];
-    try{ localStorage.setItem('fptm-lang', l); }catch(e){}
-  }
-  var saved = localStorage.getItem('fptm-lang');
-  var def = saved || (navigator.language||'en').slice(0,2).toLowerCase();
-  if(['en','uk','ru'].indexOf(def) < 0) def='en';
-  btns.forEach(function(b){ b.addEventListener('click', function(){ setLang(b.getAttribute('data-lang')); }); });
-  setLang(def);
-})();
-</script>
-<script src="i18n.js"></script>
-<script>
-(function(){
-  var btns = document.querySelectorAll('.langswitch button');
-  var svgGroups = document.querySelectorAll('svg .dgroup');
-  function setLang(l){
-    if(!I18N[l]) l='en';
-    document.documentElement.lang = l;
-    document.querySelectorAll('[data-i18n]').forEach(function(el){
-      var v = I18N[l][el.getAttribute('data-i18n')];
-      if(v != null) el.innerHTML = v;
-    });
-    svgGroups.forEach(function(g){ g.style.display = g.getAttribute('data-lang') === l ? '' : 'none'; });
-    btns.forEach(function(b){ b.classList.toggle('active', b.getAttribute('data-lang') === l); });
-    if(I18N[l]['doc.title']) document.title = I18N[l]['doc.title'];
-    try{ localStorage.setItem('fptm-lang', l); }catch(e){}
-  }
-  var saved = localStorage.getItem('fptm-lang');
-  var def = saved || (navigator.language||'en').slice(0,2).toLowerCase();
-  if(['en','uk','ru'].indexOf(def) < 0) def='en';
-  btns.forEach(function(b){ b.addEventListener('click', function(){ setLang(b.getAttribute('data-lang')); }); });
-  setLang(def);
-})();
-</script>
-<script src="i18n.js"></script>
-<script>
-(function(){
-  var btns = document.querySelectorAll('.langswitch button');
-  var svgGroups = document.querySelectorAll('svg .dgroup');
-  function setLang(l){
-    if(!I18N[l]) l='en';
-    document.documentElement.lang = l;
-    document.querySelectorAll('[data-i18n]').forEach(function(el){
-      var v = I18N[l][el.getAttribute('data-i18n')];
-      if(v != null) el.innerHTML = v;
-    });
-    svgGroups.forEach(function(g){ g.style.display = g.getAttribute('data-lang') === l ? '' : 'none'; });
-    btns.forEach(function(b){ b.classList.toggle('active', b.getAttribute('data-lang') === l); });
-    if(I18N[l]['doc.title']) document.title = I18N[l]['doc.title'];
-    try{ localStorage.setItem('fptm-lang', l); }catch(e){}
-  }
-  var saved = localStorage.getItem('fptm-lang');
-  var def = saved || (navigator.language||'en').slice(0,2).toLowerCase();
-  if(['en','uk','ru'].indexOf(def) < 0) def='en';
-  btns.forEach(function(b){ b.addEventListener('click', function(){ setLang(b.getAttribute('data-lang')); }); });
-  setLang(def);
-})();
-</script>
-<script src="i18n.js"></script>
-<script>
-(function(){
-  var btns = document.querySelectorAll('.langswitch button');
-  var svgGroups = document.querySelectorAll('svg .dgroup');
-  function setLang(l){
-    if(!I18N[l]) l='en';
-    document.documentElement.lang = l;
-    document.querySelectorAll('[data-i18n]').forEach(function(el){
-      var v = I18N[l][el.getAttribute('data-i18n')];
-      if(v != null) el.innerHTML = v;
-    });
-    svgGroups.forEach(function(g){ g.style.display = g.getAttribute('data-lang') === l ? '' : 'none'; });
-    btns.forEach(function(b){ b.classList.toggle('active', b.getAttribute('data-lang') === l); });
-    if(I18N[l]['doc.title']) document.title = I18N[l]['doc.title'];
-    try{ localStorage.setItem('fptm-lang', l); }catch(e){}
-  }
-  var saved = localStorage.getItem('fptm-lang');
-  var def = saved || (navigator.language||'en').slice(0,2).toLowerCase();
-  if(['en','uk','ru'].indexOf(def) < 0) def='en';
-  btns.forEach(function(b){ b.addEventListener('click', function(){ setLang(b.getAttribute('data-lang')); }); });
-  setLang(def);
-})();
-</script>
-<script src="i18n.js"></script>
-<script>
-(function(){
-  var btns = document.querySelectorAll('.langswitch button');
-  var svgGroups = document.querySelectorAll('svg .dgroup');
-  function setLang(l){
-    if(!I18N[l]) l='en';
-    document.documentElement.lang = l;
-    document.querySelectorAll('[data-i18n]').forEach(function(el){
-      var v = I18N[l][el.getAttribute('data-i18n')];
-      if(v != null) el.innerHTML = v;
-    });
-    svgGroups.forEach(function(g){ g.style.display = g.getAttribute('data-lang') === l ? '' : 'none'; });
-    btns.forEach(function(b){ b.classList.toggle('active', b.getAttribute('data-lang') === l); });
-    if(I18N[l]['doc.title']) document.title = I18N[l]['doc.title'];
-    try{ localStorage.setItem('fptm-lang', l); }catch(e){}
-  }
-  var saved = localStorage.getItem('fptm-lang');
-  var def = saved || (navigator.language||'en').slice(0,2).toLowerCase();
-  if(['en','uk','ru'].indexOf(def) < 0) def='en';
-  btns.forEach(function(b){ b.addEventListener('click', function(){ setLang(b.getAttribute('data-lang')); }); });
-  setLang(def);
-})();
-</script>
+
 <script src="i18n.js"></script>
 <script>
 (function(){

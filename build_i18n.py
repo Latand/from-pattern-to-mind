@@ -68,7 +68,7 @@ NODE_T={
   'beauty':'BEAUTY','possible':'POSSIBLE PATTERNS','logic':'LOGIC','isreal':'IS IT REAL?',
   'reality':'REALITY CONSTRAINT','existence':'EXISTENCE','attrtypes':'ATTRACTOR TYPES',
   'ideaattr':'IDEA ATTRACTORS','scale':'SCALE CONFLICT','selection':'SELECTION','ourrole':'OUR ROLE'},
- 'uk':{'pattern':'ПАТЕРН','attractor':'АТРАКТОР','form':'ФОРМА','agency':'ДІЄВІСТЬ','mind':'РОЗУМ',
+ 'uk':{'pattern':'ПАТЕРН','attractor':'АТРАКТОР','form':'ФОРМА','agency':'АГЕНТНІСТЬ','mind':'РОЗУМ',
   'compression':'СТИСНЕННЯ','dynstab':'ДИНАМІЧНА СТІЙКІСТЬ','time':'ЧАС','compute':'ОБЧИСЛЕННЯ',
   'beauty':'КРАСА','possible':'МОЖЛИВІ ПАТЕРНИ','logic':'ЛОГІКА','isreal':'ЦЕ РЕАЛЬНЕ?',
   'reality':'ОБМЕЖЕННЯ ДІЙСНІСТЮ','existence':'ІСНУВАННЯ','attrtypes':'ТИПИ АТРАКТОРІВ',
@@ -126,7 +126,7 @@ LEG_L={
 LEG_TITLE={'en':'LAYERS','uk':'ШАРИ','ru':'СЛОИ'}
 HDR_TITLE={'en':'From Pattern to Mind','uk':'Від патерну до розуму','ru':'От паттерна к разуму'}
 HDR_SUB={'en':'logic ▸ pattern ▸ attractor ▸ form ▸ agency ▸ mind',
- 'uk':'логіка ▸ патерн ▸ атрактор ▸ форма ▸ дієвість ▸ розум',
+ 'uk':'логіка ▸ патерн ▸ атрактор ▸ форма ▸ агентність ▸ розум',
  'ru':'логика ▸ паттерн ▸ аттрактор ▸ форма ▸ агентность ▸ разум'}
 CAP_L={
  'en':'↻ this map is itself an idea-attractor — a compression to test against reality, then drop where it fails.',
@@ -260,7 +260,7 @@ add('fig.caption',
 # kickers
 add('k.ladder','<span class="dot"></span>The ladder','<span class="dot"></span>Сходи','<span class="dot"></span>Лестница')
 add('k.logic','<span class="dot"></span>Logic','<span class="dot"></span>Логіка','<span class="dot"></span>Логика')
-add('k.agency','<span class="dot"></span>Agency','<span class="dot"></span>Дієвість','<span class="dot"></span>Агентность')
+add('k.agency','<span class="dot"></span>Agency','<span class="dot"></span>Агентність','<span class="dot"></span>Агентность')
 add('k.compute','<span class="dot"></span>Compute','<span class="dot"></span>Обчислення','<span class="dot"></span>Вычисление')
 add('k.beauty','<span class="dot"></span>Beauty','<span class="dot"></span>Краса','<span class="dot"></span>Красота')
 add('k.reality','<span class="dot"></span>Reality','<span class="dot"></span>Реальність','<span class="dot"></span>Реальность')
@@ -326,7 +326,7 @@ add('logic.full',
  '<h2>The first filter</h2><p>Before physics narrows anything, logic has already drawn the outer boundary: a square circle is not waiting somewhere to be built. Non-contradiction is the first filter on the space of patterns. Physics then keeps the stable ones, matter realizes some of those, and agency defends a few.</p>'
  '<p>The filters nest: <strong>logically possible &sup; dynamically stable &sup; realized in matter &sup; self-defending</strong>. Every rung of the ladder sits inside the one before it.</p>'
  '<p>One caution keeps this honest. When wave and particle, or a cell that cooperates and competes, look contradictory, the description is usually too coarse for the level it covers; sharpen the model and the clash dissolves. A real contradiction forbids; an apparent one only asks for a better model.</p>',
- '<h2>Перший фільтр</h2><p>Перш ніж фізика щось звузить, логіка вже окреслила зовнішню межу: квадратне коло ніде не чекає, щоб його збудували. Несуперечність &mdash; це перший фільтр на просторі патернів. Далі фізика лишає стійкі, матерія втілює декотрі з них, а дієвість обороняє небагато.</p>'
+ '<h2>Перший фільтр</h2><p>Перш ніж фізика почне звужувати межі, логіка вже окреслила зовнішній контур: квадратне коло ніде не чекає свого втілення. Несуперечність &mdash; це перший фільтр для простору патернів. Потім фізика відбирає стійкі закономірності, матерія втілює деякі з них, а агентність захищає лічені одиниці.</p>'
  '<p>Фільтри вкладені: <strong>логічно можливе &sup; динамічно стійке &sup; утілене в матерії &sup; самозахисне</strong>. Кожен щабель сходів лежить усередині попереднього.</p>'
  '<p>Одне застереження тримає цю думку чесною. Коли хвиля і частинка чи клітина, що водночас співпрацює і суперничає, видаються суперечливими, опис зазвичай надто грубий для того рівня, який охоплює; вигостри модель &mdash; і сутичка розчиняється. Справжня суперечність забороняє; уявна лише просить кращої моделі.</p>',
  '<h2>Первый фильтр</h2><p>Прежде чем физика что-то сузит, логика уже очертила внешнюю границу: квадратный круг нигде не ждёт, чтобы его построили. Непротиворечивость &mdash; первый фильтр на пространстве паттернов. Дальше физика оставляет устойчивые, материя воплощает иные из них, а агентность отстаивает немногие.</p>'
@@ -336,17 +336,17 @@ add('logic.full',
 # ---- AGENCY ----
 add('agency.short',
  '<h2>A defended pattern</h2><p>A snowflake holds its shape until it melts; a cell spends its whole life holding its own, repairing and pumping and regulating. The difference is active correction: an agent detects deviation from a preferred state and acts to undo it. A bacterium swims back up the gradient; your body holds 37&deg;C without believing in thermostats. Agency comes by degree, measured by how many kinds of disturbance a system can absorb and still reach the same end.</p>',
- '<h2>Захищений патерн</h2><p>Сніжинка тримає свою форму, доки не розтане; клітина ж усе життя втримує своє &mdash; лагодить, перекачує, налаштовує. Різниця в активному виправленні: агент помічає відхилення від бажаного стану й діє, щоб його скасувати. Бактерія пливе назад угору за градієнтом; твоє тіло тримає 37&deg;C, не вірячи в жодні термостати. Дієвість буває різного ступеня: її міряють тим, скільки різновидів збурення система здатна поглинути й усе одно дійти до тієї самої мети.</p>',
+ '<h2>Захищений патерн</h2><p>Сніжинка тримає свою форму, доки не розтане. Клітина ж присвячує все своє життя втриманню власної: лагодить мембрану, перекачує йони, регулює хімічні процеси. Різниця полягає в активній протидії відхиленням: агент виявляє відхилення від цільового стану й діє, щоб його ліквідувати. Бактерія повертається назад проти градієнта поживних речовин; твоє тіло підтримує температуру близько 37&deg;C, гадки не маючи про термостати. Агентність має різні ступені; її мірою є те, скільки різновидів збурень система здатна поглинути без втрати кінцевої мети.</p>',
  '<h2>Защищённый паттерн</h2><p>Снежинка держит свою форму, пока не растает; клетка же всю жизнь удерживает своё &mdash; чинит, перекачивает, настраивает. Разница в активном исправлении: агент замечает отклонение от желаемого состояния и действует, чтобы его отменить. Бактерия плывёт назад вверх по градиенту; твоё тело держит 37&deg;C, не веря ни в какие термостаты. Агентность бывает разной степени: её меряют тем, сколько видов возмущения система способна поглотить и всё равно прийти к той же цели.</p>')
 add('agency.full',
  '<h2>A defended pattern</h2><p>A snowflake has structure and loses it the moment the temperature rises. A cell has structure and spends its whole existence keeping it: repairing the membrane, pumping ions, regulating its chemistry, importing food, expelling waste. Both have a pattern. The difference is that the cell detects deviations from viability and acts to reduce them. Agency begins where stability becomes active correction.</p>'
  '<p>An agent, then, is a system that detects deviation from a preferred state and acts to restore or protect it.</p>'
  '<p>An asteroid on an orbit follows a pattern, and if something knocks it off course it simply continues on the new course. A bacterium knocked away from food swims back up the gradient. The bacterium has a state it returns to. That returned-to state is the goal, and the goal shows up in behavior long before anything writes it down. Your body holds its temperature near 37&deg;C without believing anything about thermostats. It shivers, it sweats, it gets hungry.</p>'
  '<p>Agency comes by degree, but not every resistance is agency. A crystal merely resists deformation; a flame conditionally self-maintains; a bacterium regulates, repairs, and returns itself to viable states; a human defends across enormous scales: body, identity, family, a scientific theory, a country. A useful measure is how many kinds of disturbance a system can absorb and still arrive at the same end.</p>',
- '<h2>Захищений патерн</h2><p>Сніжинка має структуру й губить її тієї ж миті, щойно теплішає. Клітина має структуру й усе своє існування її втримує: лагодить мембрану, перекачує йони, налаштовує власну хімію, вбирає поживу, виганяє відходи. Патерн є в обох. Різниця в тому, що клітина помічає відхилення від життєздатності й діє, щоб їх зменшити. Дієвість починається там, де стійкість стає активним виправленням.</p>'
- '<p>Отже, агент &mdash; це система, яка помічає відхилення від бажаного стану й діє, щоб відновити чи вберегти його.</p>'
- '<p>Астероїд на орбіті йде за патерном, і якщо щось зіб&rsquo;є його з курсу, він просто рушить новим. Бактерія, відкинута від їжі, пливе назад угору за градієнтом. У бактерії є стан, до якого вона вертається. Цей стан і є метою, а мета проступає в поведінці задовго до того, як її бодай хтось запише. Твоє тіло тримає температуру близько 37&deg;C, нічого не гадаючи про термостати. Воно тремтить, пітніє, прагне їсти.</p>'
- '<p>Дієвість буває різного ступеня, проте не кожен спротив &mdash; дієвість. Кристал лише опирається деформації; полум&rsquo;я підтримує себе за певних умов; бактерія налаштовує, лагодить і повертає себе до життєздатних станів; людина обороняє себе на величезних масштабах: тіло, ідентичність, родину, наукову теорію, країну. Зручна міра &mdash; скільки різновидів збурення система здатна поглинути й усе одно дійти до тієї самої мети.</p>',
+ '<h2>Захищений патерн</h2><p>Сніжинка має структуру й втрачає її, щойно теплішає. Клітина має структуру й утримує її протягом усього існування: лагодить мембрану, перекачує йони, регулює власну хімію, вбирає поживу, виводить відходи. Патерн є в обох випадках. Різниця в тому, що клітина фіксує відхилення від життєздатного стану й протидіє їм. Агентність народжується там, де стійкість перетворюється на активне самовідновлення.</p>'
+ '<p>Отже, агент &mdash; це система, яка помічає відхилення від бажаного стану й діє, щоб відновлювати чи вберігати його.</p>'
+ '<p>Астероїд на орбіті просто слідує патерну. Якщо щось зіб&rsquo;є його з курсу, він продовжить рух новою траєкторією. Бактерія, відкинута від їжі, пливе назад проти градієнта. Бактерія має стан, до якого прагне повернутися. Цей цільовий стан і є її метою &mdash; і ця мета виявляє себе в поведінці задовго до того, як хтось сторонній її запише. Твоє тіло підтримує температуру близько 37&deg;C, гадки не маючи про існування термостатів. Воно тремтить, пітніє, відчуває голод.</p>'
+ '<p>Агентність має різні ступені, однак не будь-який опір є агентністю. Кристал лише опирається деформації; полум&rsquo;я підтримує себе за певних умов; бактерія регулює процеси, лагодить пошкодження й повертає себе до норми; а людина захищає себе на багатьох рівнях: від власного тіла та ідентичності до родини, наукової теорії чи цілої країни. Універсальним мірилом тут є те, скільки різновидів зовнішніх завад система здатна нейтралізувати й усе одно прийти до своєї мети.</p>',
  '<h2>Защищённый паттерн</h2><p>Снежинка имеет структуру и теряет её в тот же миг, как поднимается температура. Клетка имеет структуру и всё своё существование её удерживает: чинит мембрану, перекачивает ионы, настраивает собственную химию, поглощает пищу, выводит отходы. Паттерн есть у обеих. Разница в том, что клетка замечает отклонения от жизнеспособности и действует, чтобы их уменьшить. Агентность начинается там, где устойчивость становится активным исправлением.</p>'
  '<p>Итак, агент &mdash; это система, что замечает отклонение от желаемого состояния и действует, чтобы восстановить или уберечь его.</p>'
  '<p>Астероид на орбите идёт за паттерном, и если что-то собьёт его с курса, он просто двинется новым. Бактерия, отброшенная от еды, плывёт назад вверх по градиенту. У бактерии есть состояние, к которому она возвращается. Это состояние и есть цель, а цель проступает в поведении задолго до того, как её хоть кто-то запишет. Твоё тело держит температуру около 37&deg;C, ничего не думая о термостатах. Оно дрожит, потеет, хочет есть.</p>'
@@ -355,7 +355,7 @@ add('agency.full',
 # ---- COMPUTE ----
 add('compute.short',
  '<h2>Substrate-general logic</h2><p>The same logic runs on ion channels, transistors, or interfering waves; the universe still charges rent in energy, speed, and error. Even non-neural cells compute &mdash; Levin&rsquo;s bioelectric signals help decide what body to build &mdash; though that means goal-directed regulation, not thought. More compute searches more of the pattern-space, finds deeper compressions, and buys more agency.</p>',
- '<h2>Логіка поза субстратом</h2><p>Та сама логіка працює на йонних каналах, транзисторах чи хвилях, що інтерферують; Всесвіт усе одно бере свою плату &mdash; енергією, швидкістю, похибкою. Обчислюють навіть не-нейронні клітини: біоелектричні сигнали в працях Левіна допомагають вирішити, яке тіло будувати, &mdash; хоча йдеться про цілеспрямоване впорядкування, а не про думку. Більше обчислень &mdash; ширший огляд простору патернів, глибші стиснення й більше дієвості.</p>',
+ '<h2>Логіка поза субстратом</h2><p>Та сама логіка працює на йонних каналах, транзисторах чи інтерференційних хвилях; але Всесвіт усе одно стягує за це плату: часом, енергією та похибками. Обчислення відбуваються навіть у безмозких клітинах: біоелектричні сигнали допомагають організму визначити, яке тіло будувати. Звісно, тут ідеться про цілеспрямовану самоорганізацію, а не про свідоме мислення. Більше обчислювального ресурсу означає глибше сканування простору патернів, ефективніше стиснення і, як наслідок, вищий ступінь агентності.</p>',
  '<h2>Логика вне субстрата</h2><p>Та же логика работает на ионных каналах, транзисторах или интерферирующих волнах; вселенная всё равно берёт свою плату &mdash; энергией, скоростью, ошибкой. Вычисляют даже не-нейронные клетки: биоэлектрические сигналы в работах Левина помогают решить, какое тело строить, &mdash; хотя речь о целенаправленном упорядочивании, а не о мысли. Больше вычислений &mdash; шире обзор пространства паттернов, глубже сжатия и больше агентности.</p>')
 add('compute.full',
  '<h2>Substrate-general logic</h2><p>Computation is substrate-general: the same operations run on ion channels, on transistors, or on interfering waves, where resonance adds and cancellation subtracts. The logic is portable; the universe charges rent. Every real machine pays its substrate&rsquo;s bill in energy, speed, and error.</p>'
@@ -603,7 +603,10 @@ style_start = src.index('<style>'); style_end = src.index('</style>')+len('</sty
 STYLE = src[style_start:style_end]
 # the two scripts at the end (pan/zoom + toggle)
 sidx = src.index('<script>')
-SCRIPTS = src[sidx:src.rindex('</script>')+len('</script>')]
+if '<script src="i18n.js">' in src:
+    SCRIPTS = src[sidx:src.index('<script src="i18n.js">')]
+else:
+    SCRIPTS = src[sidx:src.rindex('</script>')+len('</script>')]
 
 EXTRA_CSS = """
 <style>
