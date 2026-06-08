@@ -175,10 +175,15 @@ def build_svg():
         A('<line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f" stroke="%s" stroke-width="%.1f" opacity="%.2f"%s marker-end="url(#ar-%s)"/>'%(x1,y1,x2,y2,col,w,op,dash,mk[col]))
         lx=x1+(x2-x1)*t; ly=y1+(y2-y1)*t
         edge_pos.append((lx,ly,col))
+    NODE_CARD={'pattern':'ladder','logic':'logic','agency':'agency','compute':'compute','beauty':'beauty',
+               'reality':'reality','existence':'existence','ideaattr':'ideas','selection':'selection'}
     for k in NODE_ORDER:
         n=N[k]; x=n['x']-n['w']/2; y=n['y']-NH/2
         sw = 2.6 if n.get('origin') else 1.7
-        A('<rect x="%.0f" y="%.0f" width="%d" height="%d" rx="11" fill="%s" stroke="%s" stroke-width="%.1f"/>'%(x,y,n['w'],NH,FILL,n['c'],sw))
+        extra=''
+        if k in NODE_CARD:
+            extra=' class="map-node" data-target="%s" role="button" tabindex="0" aria-label="Open the %s card"'%(NODE_CARD[k],NODE_CARD[k])
+        A('<rect x="%.0f" y="%.0f" width="%d" height="%d" rx="11" fill="%s" stroke="%s" stroke-width="%.1f"%s/>'%(x,y,n['w'],NH,FILL,n['c'],sw,extra))
     lx0=44; ly0=1150
     yy=ly0+18
     leg_dash=[False,False,True,True]; leg_col=[BLUE,MINT,PURP,GOLD]
@@ -301,7 +306,8 @@ add('ladder.full',
  '<li><b>Form</b> &mdash; <span>the embodied expression of an attractor in a substrate.</span></li>'
  '<li><b>Agency</b> &mdash; <span>active preservation of a form or goal-state under perturbation.</span></li>'
  '<li><b>Mind</b> &mdash; <span>agency with counterfactual modeling of possible patterns.</span></li>'
- '</ul><p>Each rung adds one thing the rung below lacks. That is the reason to prefer a ladder over the slogan &ldquo;everything is pattern,&rdquo; which explains nothing. One note on a word that recurs below. In its strict sense &mdash; the one nonlinear dynamics makes precise &mdash; an <em>attractor</em> needs a state space and a dynamics, a set that trajectories fall toward. I use it literally only when those can be specified, and as a disciplined analogy for minds and cultures otherwise.</p>',
+ '</ul><p>Each rung adds one thing the rung below lacks. That is the reason to prefer a ladder over the slogan &ldquo;everything is pattern,&rdquo; which explains nothing. One note on a word that recurs below. In its strict sense &mdash; the one nonlinear dynamics makes precise &mdash; an <em>attractor</em> needs a state space and a dynamics, a set that trajectories fall toward. I use it literally only when those can be specified, and as a disciplined analogy for minds and cultures otherwise.</p>'
+ '<p>A note on the top rungs, since the climb is easy to over-read. Self-maintenance is agency; model-based regulation is cognition; counterfactual modeling of patterns not yet present is mind. Felt experience &mdash; sentience, there being something it is like to be the system from the inside &mdash; is a further step this ladder does not take for you. A system can model possibilities while feeling nothing, and something may feel without elaborate planning; I hold that gap open, uncrossed by the climb.</p>',
  '<h2>П&rsquo;ять сходинок несуть основну вагу</h2><ul class="ladder">'
  '<li><b>Патерн</b> &mdash; <span>закономірність, яку здатна стиснути якась модель чи код.</span></li>'
  '<li><b>Атрактор</b> &mdash; <span>зона, до якої система схильна повертатися за певної динаміки.</span></li>'
@@ -402,11 +408,11 @@ add('reality.full',
 
 # ---- EXISTENCE ----
 add('existence.short',
- '<h2>A stronger reading</h2><p>A bolder version, held loosely: to exist is to be a pattern, and only noise resists all compression. On this view a form is a timeless possibility, and time is how it enters matter.</p>',
+ '<h2>A stronger reading</h2><p>A bolder version, held loosely: to exist is to be differentiated, and compression is the step after &mdash; structure economical enough for a model to describe. Only the wholly undifferentiated fails to exist. On this view a form is a timeless possibility, and time is how it enters matter.</p>',
  '<h2>Сильніше прочитання</h2><p>Сміливіша версія, яку подаю обережно, не наполягаючи: існувати означає бути патерном, і лише шум опирається будь-якому стисненню. За цим поглядом форма &mdash; це позачасова можливість, а час &mdash; те, чим вона входить у матерію.</p>',
  '<h2>Более сильное прочтение</h2><p>Более смелая версия, за которую держусь не слишком крепко: существовать значит быть паттерном, и лишь шум противится всякому сжатию. При таком взгляде форма &mdash; это вневременная возможность, а время &mdash; то, чем она входит в материю.</p>')
 add('existence.full',
- '<h2>A stronger reading</h2><p>There is a bolder version of all this, and I want to flag it as a reading and hold it loosely. On the strong version, to exist is to be a pattern. What resists all compression is noise &mdash; pure randomness, with no description shorter than itself. Chaos is a different animal: a short rule whose long run still outruns prediction. Anything you can point to at all is already compressible enough to point at.</p>'
+ '<h2>A stronger reading</h2><p>There is a bolder version of all this, and I want to flag it as a reading and hold it loosely. It begins one step before compression. To exist is to be differentiated: to be this rather than that, to have a boundary, a contrast, a distribution, a way of making a difference. Compression is what happens next, when those differences carry enough structure that a model can describe them more economically than listing them out. Pure noise resists compression, yet it stays fully differentiated: even noise has a distribution, a length, a boundary, a sequence. Chaos is a different animal again, a short rule whose long run still outruns prediction. What would fail to exist is the wholly undifferentiated, and anything you can point to at all is already differentiated enough to point at.</p>'
  '<p>Time fits the same picture, and here the debt is to Whitehead. On this reading a form is a timeless possibility, and time is the dimension in which it becomes actual and embodied &mdash; what Whitehead called the form&rsquo;s <em>ingression</em> into matter. An agent is what lets a timeless shape unfold through action. Whether this is ontology or only a useful lens is the open question from the last section, carried one level deeper.</p>',
  '<h2>Сильніше прочитання</h2><p>Є сміливіша версія всього цього, і я хочу позначити її саме як прочитання й триматися обережно, не наполягаючи. За сильною версією, існувати означає бути патерном. Те, що опирається будь-якому стисненню, &mdash; це шум: чиста випадковість, чий опис не коротший за неї саму. Хаос &mdash; геть інша річ: коротке правило, чий довгий перебіг усе одно випереджає передбачення. Будь-що, на що взагалі можна вказати, уже досить стисне, щоб на нього вказати.</p>'
  '<p>Час лягає в ту саму картину, і тут борг &mdash; перед Вайтгедом. За цим прочитанням форма &mdash; позачасова можливість, а час &mdash; той вимір, у якому вона стає дійсною й утіленою; Вайтгед називав це <em>інгресією</em> форми в матерію. Агент &mdash; це те, що дає позачасовій формі розгорнутися через дію. Чи це онтологія, чи лише зручна призма &mdash; те саме відкрите питання з попереднього розділу, узяте на рівень глибше.</p>',
@@ -434,7 +440,7 @@ add('selection.short',
 add('selection.full',
  '<h2>Which patterns should we realize?</h2><p>The map would be incomplete if it stopped at description, because plenty of stable patterns are worth refusing: cancer, addiction loops, torture systems, a maximizer that grinds the world into paperclips. That a pattern can exist tells you nothing about whether it should be built. That last step is a choice, and it carries values the earlier steps do not contain.</p>'
  '<p>What those examples share is a particular shape: they are <strong>locally stable and globally destructive</strong>. Cancer is a cellular attractor that violates the coherence of the organism. Addiction is a reward-loop attractor that consumes the agency of the person. Fascism is a social attractor that devours plural human agency. A pattern can be perfectly stable and still be pathological if it preserves itself by destroying the larger systems that make it possible.</p>'
-  "<p>That a pattern can exist says nothing about whether it should be built. Which patterns are worth realizing is a separate question we haven't explored here yet. Prediction is the floor; the choice is not in the physics.</p>"
+  "<p>That a pattern can exist says nothing about whether it should be built; prediction is the floor, and the choice is not in the physics. If those examples already point at a rule, it is this: prefer patterns that preserve or widen plural agency across scales, and refuse the ones that keep themselves alive by consuming the agency of the larger systems they belong to. That is one axiom and a starting point open to challenge, well short of a finished ethics.</p>"
  '<p>Still, the choice falls to someone. As conscious agents we are the ones who can recognize that these patterns exist at all, and that recognition is where the duty starts: to seek them out, test them, and choose. Who, if not us?</p>',
  '<h2>Які патерни нам варто втілювати?</h2><p>Мапа була б неповною, якби спинилася на описі, бо чимало стійких патернів варто відкинути: рак, петлі залежності, системи тортур, максимізатор, що перемелює світ на скріпки. Те, що патерн може існувати, не каже нічого про те, чи треба його будувати. Цей останній крок &mdash; вибір, і він несе цінності, яких у попередніх кроках немає.</p>'
  '<p>Спільне в цих прикладах &mdash; певна форма: вони <strong>локально стійкі й згубні для цілого</strong>. Рак &mdash; клітинний атрактор, що ламає злагодженість організму. Залежність &mdash; атрактор винагородної петлі, що поглинає агентність людини. Фашизм &mdash; суспільний атрактор, що пожирає множинну людську агентність. Патерн може бути цілком стійким і все одно патологічним, якщо береже себе, руйнуючи ті більші системи, які роблять його можливим.</p>'
@@ -568,7 +574,7 @@ CARDS=[
 def build_cards():
     o=[]
     for img,kc,key in CARDS:
-        o.append('<section class="scene card is-short" style="background-image:url(\'fptm-assets/%s.webp\')">'%img)
+        o.append('<section id="card-%s" class="scene card is-short" style="background-image:url(\'fptm-assets/%s.webp\')">'%(key,img))
         o.append('<button type="button" class="cardtoggle" aria-label="Toggle detail"></button>')
         o.append('<p class="kicker %s" data-i18n="k.%s">%s</p>'%(kc,key,D['k.'+key]['en']))
         o.append('<div class="card-short" data-i18n="%s.short">%s</div>'%(key,D[key+'.short']['en']))
@@ -731,7 +737,7 @@ BODY = """</head>
 </main>
 
 <!-- Modal overlay with glassmorphism -->
-<div class="modal-overlay" id="cardModal" aria-hidden="true" role="dialog">
+<div class="modal-overlay" id="cardModal" aria-hidden="true" role="dialog" aria-modal="true">
   <div class="modal-content" id="modalContent">
     <button type="button" class="modal-close" id="modalClose" aria-label="Close modal">&times;</button>
     <div class="modal-body" id="modalBody"></div>

@@ -70,6 +70,11 @@ p{margin:0 0 24px}
   line-height:.78; padding:8px 14px 0 0; color:var(--blue);
 }
 section{margin:64px auto 0}
+#panzoom svg text{pointer-events:none}
+.map-node{cursor:pointer; transition:stroke-width .12s, filter .12s}
+.map-node:hover{stroke-width:3.4; filter:drop-shadow(0 0 6px currentColor)}
+.map-node:focus{outline:none; stroke:var(--gold); stroke-width:3.4}
+.map-node:focus-visible{outline:none; stroke:var(--gold); stroke-width:3.4}
 .kicker{display:flex; align-items:center; gap:11px; font-family:"Fraunces","Playfair Display",serif; font-size:12.5px; letter-spacing:.26em; text-transform:uppercase; color:var(--mute); margin:0 0 14px; font-weight:600}
 .kicker .dot{width:9px; height:9px; border-radius:2px; background:var(--blue); box-shadow:0 0 12px currentColor}
 .k-blue .dot{background:var(--blue);color:var(--blue)} .k-mint .dot{background:var(--mint);color:var(--mint)}
@@ -440,25 +445,25 @@ svg text {
 <line x1="1790.8" y1="693.0" x2="1794.2" y2="857.0" stroke="#B79CF0" stroke-width="1.7" opacity="0.50" stroke-dasharray="6,6" marker-end="url(#ar-p)"/>
 <line x1="1799.8" y1="933.0" x2="1815.2" y2="1057.0" stroke="#B79CF0" stroke-width="1.7" opacity="0.50" stroke-dasharray="6,6" marker-end="url(#ar-p)"/>
 <line x1="1216.0" y1="1058.1" x2="1681.0" y2="927.1" stroke="#B79CF0" stroke-width="1.7" opacity="0.50" stroke-dasharray="6,6" marker-end="url(#ar-p)"/>
-<rect x="235" y="626" width="210" height="58" rx="11" fill="#141C32" stroke="#5EEAD4" stroke-width="2.6"/>
+<rect x="235" y="626" width="210" height="58" rx="11" fill="#141C32" stroke="#5EEAD4" stroke-width="2.6" class="map-node" data-target="ladder" role="button" tabindex="0" aria-label="Open the ladder card"/>
 <rect x="607" y="626" width="226" height="58" rx="11" fill="#141C32" stroke="#8AB4F8" stroke-width="1.7"/>
 <rect x="980" y="626" width="210" height="58" rx="11" fill="#141C32" stroke="#8AB4F8" stroke-width="1.7"/>
-<rect x="1345" y="626" width="200" height="58" rx="11" fill="#141C32" stroke="#8AB4F8" stroke-width="1.7"/>
+<rect x="1345" y="626" width="200" height="58" rx="11" fill="#141C32" stroke="#8AB4F8" stroke-width="1.7" class="map-node" data-target="agency" role="button" tabindex="0" aria-label="Open the agency card"/>
 <rect x="1690" y="626" width="200" height="58" rx="11" fill="#141C32" stroke="#8AB4F8" stroke-width="1.7"/>
 <rect x="235" y="386" width="210" height="58" rx="11" fill="#141C32" stroke="#8AB4F8" stroke-width="1.7"/>
 <rect x="601" y="386" width="238" height="58" rx="11" fill="#141C32" stroke="#8AB4F8" stroke-width="1.7"/>
 <rect x="996" y="386" width="178" height="58" rx="11" fill="#141C32" stroke="#8AB4F8" stroke-width="1.7"/>
-<rect x="1333" y="386" width="224" height="58" rx="11" fill="#141C32" stroke="#8AB4F8" stroke-width="1.7"/>
-<rect x="242" y="166" width="196" height="58" rx="11" fill="#141C32" stroke="#5EEAD4" stroke-width="1.7"/>
+<rect x="1333" y="386" width="224" height="58" rx="11" fill="#141C32" stroke="#8AB4F8" stroke-width="1.7" class="map-node" data-target="compute" role="button" tabindex="0" aria-label="Open the compute card"/>
+<rect x="242" y="166" width="196" height="58" rx="11" fill="#141C32" stroke="#5EEAD4" stroke-width="1.7" class="map-node" data-target="beauty" role="button" tabindex="0" aria-label="Open the beauty card"/>
 <rect x="786" y="151" width="228" height="58" rx="11" fill="#141C32" stroke="#B79CF0" stroke-width="1.7"/>
-<rect x="1252" y="151" width="216" height="58" rx="11" fill="#141C32" stroke="#8AB4F8" stroke-width="1.7"/>
+<rect x="1252" y="151" width="216" height="58" rx="11" fill="#141C32" stroke="#8AB4F8" stroke-width="1.7" class="map-node" data-target="logic" role="button" tabindex="0" aria-label="Open the logic card"/>
 <rect x="240" y="866" width="200" height="58" rx="11" fill="#141C32" stroke="#8AB4F8" stroke-width="1.7"/>
-<rect x="223" y="1066" width="234" height="58" rx="11" fill="#141C32" stroke="#8AB4F8" stroke-width="1.7"/>
-<rect x="621" y="866" width="198" height="58" rx="11" fill="#141C32" stroke="#8AB4F8" stroke-width="1.7"/>
+<rect x="223" y="1066" width="234" height="58" rx="11" fill="#141C32" stroke="#8AB4F8" stroke-width="1.7" class="map-node" data-target="reality" role="button" tabindex="0" aria-label="Open the reality card"/>
+<rect x="621" y="866" width="198" height="58" rx="11" fill="#141C32" stroke="#8AB4F8" stroke-width="1.7" class="map-node" data-target="existence" role="button" tabindex="0" aria-label="Open the existence card"/>
 <rect x="959" y="866" width="252" height="58" rx="11" fill="#141C32" stroke="#5EEAD4" stroke-width="1.7"/>
-<rect x="1347" y="866" width="216" height="58" rx="11" fill="#141C32" stroke="#5EEAD4" stroke-width="1.7"/>
+<rect x="1347" y="866" width="216" height="58" rx="11" fill="#141C32" stroke="#5EEAD4" stroke-width="1.7" class="map-node" data-target="ideas" role="button" tabindex="0" aria-label="Open the ideas card"/>
 <rect x="963" y="1066" width="244" height="58" rx="11" fill="#141C32" stroke="#B79CF0" stroke-width="1.7"/>
-<rect x="1690" y="866" width="210" height="58" rx="11" fill="#141C32" stroke="#B79CF0" stroke-width="1.7"/>
+<rect x="1690" y="866" width="210" height="58" rx="11" fill="#141C32" stroke="#B79CF0" stroke-width="1.7" class="map-node" data-target="selection" role="button" tabindex="0" aria-label="Open the selection card"/>
 <rect x="1707" y="1066" width="226" height="58" rx="11" fill="#141C32" stroke="#B79CF0" stroke-width="1.7"/>
 <line x1="44" y1="1168" x2="72" y2="1168" stroke="#8AB4F8" stroke-width="2.6"/>
 <line x1="44" y1="1186" x2="72" y2="1186" stroke="#5EEAD4" stroke-width="2.6"/>
@@ -781,59 +786,59 @@ svg text {
 </figure>
 
 <div class="col">
-  <section class="scene card is-short" style="background-image:url('fptm-assets/interlude-0.webp')">
+  <section id="card-ladder" class="scene card is-short" style="background-image:url('fptm-assets/interlude-0.webp')">
   <button type="button" class="cardtoggle" aria-label="Toggle detail"></button>
   <p class="kicker k-blue" data-i18n="k.ladder"><span class="dot"></span>The ladder</p>
   <div class="card-short" data-i18n="ladder.short"><h2>Five rungs</h2><ul class="ladder"><li><b>Pattern</b> &mdash; <span>a regularity compressible by some model.</span></li><li><b>Attractor</b> &mdash; <span>a pattern a system returns to under a dynamics.</span></li><li><b>Form</b> &mdash; <span>an attractor embodied in a substrate.</span></li><li><b>Agency</b> &mdash; <span>a form that defends itself under perturbation.</span></li><li><b>Mind</b> &mdash; <span>agency that models patterns it does not yet have.</span></li></ul><p>Each rung adds one thing the rung below lacks.</p></div>
-  <div class="card-full" data-i18n="ladder.full"><h2>Five rungs carry most of the weight</h2><ul class="ladder"><li><b>Pattern</b> &mdash; <span>a regularity compressible by some model or code.</span></li><li><b>Attractor</b> &mdash; <span>a region a system tends to return to under a dynamics.</span></li><li><b>Form</b> &mdash; <span>the embodied expression of an attractor in a substrate.</span></li><li><b>Agency</b> &mdash; <span>active preservation of a form or goal-state under perturbation.</span></li><li><b>Mind</b> &mdash; <span>agency with counterfactual modeling of possible patterns.</span></li></ul><p>Each rung adds one thing the rung below lacks. That is the reason to prefer a ladder over the slogan &ldquo;everything is pattern,&rdquo; which explains nothing. One note on a word that recurs below. In its strict sense &mdash; the one nonlinear dynamics makes precise &mdash; an <em>attractor</em> needs a state space and a dynamics, a set that trajectories fall toward. I use it literally only when those can be specified, and as a disciplined analogy for minds and cultures otherwise.</p></div>
+  <div class="card-full" data-i18n="ladder.full"><h2>Five rungs carry most of the weight</h2><ul class="ladder"><li><b>Pattern</b> &mdash; <span>a regularity compressible by some model or code.</span></li><li><b>Attractor</b> &mdash; <span>a region a system tends to return to under a dynamics.</span></li><li><b>Form</b> &mdash; <span>the embodied expression of an attractor in a substrate.</span></li><li><b>Agency</b> &mdash; <span>active preservation of a form or goal-state under perturbation.</span></li><li><b>Mind</b> &mdash; <span>agency with counterfactual modeling of possible patterns.</span></li></ul><p>Each rung adds one thing the rung below lacks. That is the reason to prefer a ladder over the slogan &ldquo;everything is pattern,&rdquo; which explains nothing. One note on a word that recurs below. In its strict sense &mdash; the one nonlinear dynamics makes precise &mdash; an <em>attractor</em> needs a state space and a dynamics, a set that trajectories fall toward. I use it literally only when those can be specified, and as a disciplined analogy for minds and cultures otherwise.</p><p>A note on the top rungs, since the climb is easy to over-read. Self-maintenance is agency; model-based regulation is cognition; counterfactual modeling of patterns not yet present is mind. Felt experience &mdash; sentience, there being something it is like to be the system from the inside &mdash; is a further step this ladder does not take for you. A system can model possibilities while feeling nothing, and something may feel without elaborate planning; I hold that gap open, uncrossed by the climb.</p></div>
   </section>
-  <section class="scene card is-short" style="background-image:url('fptm-assets/interlude-logic.webp')">
+  <section id="card-logic" class="scene card is-short" style="background-image:url('fptm-assets/interlude-logic.webp')">
   <button type="button" class="cardtoggle" aria-label="Toggle detail"></button>
   <p class="kicker k-blue" data-i18n="k.logic"><span class="dot"></span>Logic</p>
   <div class="card-short" data-i18n="logic.short"><h2>The first filter</h2><p>Logic draws the outer boundary before physics does: a square circle is never built. The filters nest &mdash; <strong>logically possible &sup; dynamically stable &sup; realized in matter &sup; self-defending</strong> &mdash; and every rung sits inside the one before it.</p></div>
   <div class="card-full" data-i18n="logic.full"><h2>The first filter</h2><p>Before physics narrows anything, logic has already drawn the outer boundary: a square circle is not waiting somewhere to be built. Non-contradiction is the first filter on the space of patterns. Physics then keeps the stable ones, matter realizes some of those, and agency defends a few.</p><p>The filters nest: <strong>logically possible &sup; dynamically stable &sup; realized in matter &sup; self-defending</strong>. Every rung of the ladder sits inside the one before it.</p><p>One caution keeps this honest. When wave and particle, or a cell that cooperates and competes, look contradictory, the description is usually too coarse for the level it covers; sharpen the model and the clash dissolves. A real contradiction forbids; an apparent one only asks for a better model.</p></div>
   </section>
-  <section class="scene card is-short" style="background-image:url('fptm-assets/interlude-1.webp')">
+  <section id="card-agency" class="scene card is-short" style="background-image:url('fptm-assets/interlude-1.webp')">
   <button type="button" class="cardtoggle" aria-label="Toggle detail"></button>
   <p class="kicker k-blue" data-i18n="k.agency"><span class="dot"></span>Agency</p>
   <div class="card-short" data-i18n="agency.short"><h2>A defended pattern</h2><p>A snowflake holds its shape until it melts; a cell spends its whole life holding its own, repairing and pumping and regulating. The difference is active correction: an agent detects deviation from a preferred state and acts to undo it. A bacterium swims back up the gradient; your body holds 37&deg;C without believing in thermostats. Agency comes by degree, measured by how many kinds of disturbance a system can absorb and still reach the same end.</p></div>
   <div class="card-full" data-i18n="agency.full"><h2>A defended pattern</h2><p>A snowflake has structure and loses it the moment the temperature rises. A cell has structure and spends its whole existence keeping it: repairing the membrane, pumping ions, regulating its chemistry, importing food, expelling waste. Both have a pattern. The difference is that the cell detects deviations from viability and acts to reduce them. Agency begins where stability becomes active correction.</p><p>An agent, then, is a system that detects deviation from a preferred state and acts to restore or protect it.</p><p>An asteroid on an orbit follows a pattern, and if something knocks it off course it simply continues on the new course. A bacterium knocked away from food swims back up the gradient. The bacterium has a state it returns to. That returned-to state is the goal, and the goal shows up in behavior long before anything writes it down. Your body holds its temperature near 37&deg;C without believing anything about thermostats. It shivers, it sweats, it gets hungry.</p><p>Agency comes by degree, but not every resistance is agency. A crystal merely resists deformation; a flame conditionally self-maintains; a bacterium regulates, repairs, and returns itself to viable states; a human defends across enormous scales: body, identity, family, a scientific theory, a country. A useful measure is how many kinds of disturbance a system can absorb and still arrive at the same end.</p></div>
   </section>
-  <section class="scene card is-short" style="background-image:url('fptm-assets/interlude-compute.webp')">
+  <section id="card-compute" class="scene card is-short" style="background-image:url('fptm-assets/interlude-compute.webp')">
   <button type="button" class="cardtoggle" aria-label="Toggle detail"></button>
   <p class="kicker k-blue" data-i18n="k.compute"><span class="dot"></span>Compute</p>
   <div class="card-short" data-i18n="compute.short"><h2>Substrate-general logic</h2><p>The same logic runs on ion channels, transistors, or interfering waves; the universe still charges rent in energy, speed, and error. Even non-neural cells compute &mdash; Levin&rsquo;s bioelectric signals help decide what body to build &mdash; though that means goal-directed regulation, not thought. More compute searches more of the pattern-space, finds deeper compressions, and buys more agency.</p></div>
   <div class="card-full" data-i18n="compute.full"><h2>Substrate-general logic</h2><p>Computation is substrate-general: the same operations run on ion channels, on transistors, or on interfering waves, where resonance adds and cancellation subtracts. The logic is portable; the universe charges rent. Every real machine pays its substrate&rsquo;s bill in energy, speed, and error.</p><p>Computation happens beyond the brain too. Following Levin&rsquo;s work on bioelectricity, even cells without synapses use electrical signals to determine the body&rsquo;s form. This is the thread from thought to morphology. The cell regulates its states in a problem space without reasoning or feeling. This is cognition in its simplest, basic form. The search has structure: past patterns prune the options, directing the system along an allowed corridor. This reduces energy costs, making computation possible.</p><p>More of it changes what is reachable. More compute means more of the pattern-space searched, which means deeper compressions found and more value pulled out &mdash; and more agency too, since a richer model answers more kinds of disturbance. The scaling looks the same whether the substrate is a chip or an organism. Compute does not invent possibilities; it searches, realizes, and constrains the ones the substrate already allows.</p></div>
   </section>
-  <section class="scene card is-short" style="background-image:url('fptm-assets/interlude-2.webp')">
+  <section id="card-beauty" class="scene card is-short" style="background-image:url('fptm-assets/interlude-2.webp')">
   <button type="button" class="cardtoggle" aria-label="Toggle detail"></button>
   <p class="kicker k-mint" data-i18n="k.beauty"><span class="dot"></span>Beauty</p>
   <div class="card-short" data-i18n="beauty.short"><h2>Beauty as compression progress</h2><p>Repetition bores and noise says nothing; beauty lives between, where a new pattern still fits the larger one. A theme states itself, varies, resolves, and the fit is the reward. Following Schmidhuber, the feeling may track compression progress: a model expanding without breaking. The signal can lie &mdash; a myth, a slogan, a conspiracy can all feel beautiful &mdash; because a compression can fit the mind while missing the world.</p></div>
   <div class="card-full" data-i18n="beauty.full"><h2>Beauty as compression progress</h2><p>Repetition alone is dull. <em>AAAAAA</em> is maximally compressible and says nothing. Noise sits at the other end, with no compression available at all. The interesting zone lies between them, and music lives there. What lives there is meaningful surprise, and the word <em>meaningful</em> is doing the work: a new pattern that still fits the larger pattern. Mere novelty will not do, since noise is novel too and fits nothing. A theme repeats, so the mind builds a model. The theme varies, which creates tension. The variation resolves, and the mind registers that the new material belonged to the larger shape all along. That moment of fit is the reward.</p><p>One possibility, and here I am following Schmidhuber, is that the feeling tracks how fast a model improves, more than how much order is already there. Beauty may mark compression progress: the moment a model expands without breaking. The compressions that stay beautiful tend to be the ones simple enough to grasp, rich enough to keep exploring, and useful enough to predict the next moment. This is an assumption: the classic inverted-U curves that link interest with novelty and complexity work only in specific domains.</p><p>That signal can lie. A myth can be beautiful. A propaganda symbol can be elegant. A conspiracy theory can feel like a key turning in a lock. Beauty is evidence that a compression fits the mind, and a compression can fit the mind while missing the world.</p></div>
   </section>
-  <section class="scene card is-short" style="background-image:url('fptm-assets/interlude-3.webp')">
+  <section id="card-reality" class="scene card is-short" style="background-image:url('fptm-assets/interlude-3.webp')">
   <button type="button" class="cardtoggle" aria-label="Toggle detail"></button>
   <p class="kicker k-blue" data-i18n="k.reality"><span class="dot"></span>Reality</p>
   <div class="card-short" data-i18n="reality.short"><h2>When is a pattern real?</h2><p>A pattern earns warrant when independent minds can recover it and use it to predict, act, and be corrected. Whether that recoverability makes a pattern real or only reveals it, I leave open. Science and propaganda both compress the world; good compression lets reality correct it, and bad compression explains the correction away.</p></div>
   <div class="card-full" data-i18n="reality.full"><h2>When is a pattern real?</h2><p>A pattern earns warrant when independent minds can recover it and use it to predict, to act, and to be corrected. Newtonian mechanics was superseded and is still not fake. Diagnostic categories are messy and still not imaginary. Musical intervals are read through culture, and the frequency ratios underneath them are no hallucination.</p><p>Whether that recoverability <em>constitutes</em> a pattern&rsquo;s reality or merely <em>reveals</em> it, I leave open. It may be a separate realm, it may be part of the pattern itself, it may be both. A hidden planet was real before anyone detected it; a private pain is real before anyone else can recover it &mdash; and in each case how we would ever know stays tangled with what is there. I would rather hold the question than fake an answer.</p><p>The test works regardless of where you land on the metaphysics. Science and propaganda both compress the world; the difference lives in what each does next. Good compression lets reality correct it; bad compression explains the correction away.</p></div>
   </section>
-  <section class="scene card is-short" style="background-image:url('fptm-assets/interlude-exist.webp')">
+  <section id="card-existence" class="scene card is-short" style="background-image:url('fptm-assets/interlude-exist.webp')">
   <button type="button" class="cardtoggle" aria-label="Toggle detail"></button>
   <p class="kicker k-purp" data-i18n="k.existence"><span class="dot"></span>Existence</p>
-  <div class="card-short" data-i18n="existence.short"><h2>A stronger reading</h2><p>A bolder version, held loosely: to exist is to be a pattern, and only noise resists all compression. On this view a form is a timeless possibility, and time is how it enters matter.</p></div>
-  <div class="card-full" data-i18n="existence.full"><h2>A stronger reading</h2><p>There is a bolder version of all this, and I want to flag it as a reading and hold it loosely. On the strong version, to exist is to be a pattern. What resists all compression is noise &mdash; pure randomness, with no description shorter than itself. Chaos is a different animal: a short rule whose long run still outruns prediction. Anything you can point to at all is already compressible enough to point at.</p><p>Time fits the same picture, and here the debt is to Whitehead. On this reading a form is a timeless possibility, and time is the dimension in which it becomes actual and embodied &mdash; what Whitehead called the form&rsquo;s <em>ingression</em> into matter. An agent is what lets a timeless shape unfold through action. Whether this is ontology or only a useful lens is the open question from the last section, carried one level deeper.</p></div>
+  <div class="card-short" data-i18n="existence.short"><h2>A stronger reading</h2><p>A bolder version, held loosely: to exist is to be differentiated, and compression is the step after &mdash; structure economical enough for a model to describe. Only the wholly undifferentiated fails to exist. On this view a form is a timeless possibility, and time is how it enters matter.</p></div>
+  <div class="card-full" data-i18n="existence.full"><h2>A stronger reading</h2><p>There is a bolder version of all this, and I want to flag it as a reading and hold it loosely. It begins one step before compression. To exist is to be differentiated: to be this rather than that, to have a boundary, a contrast, a distribution, a way of making a difference. Compression is what happens next, when those differences carry enough structure that a model can describe them more economically than listing them out. Pure noise resists compression, yet it stays fully differentiated: even noise has a distribution, a length, a boundary, a sequence. Chaos is a different animal again, a short rule whose long run still outruns prediction. What would fail to exist is the wholly undifferentiated, and anything you can point to at all is already differentiated enough to point at.</p><p>Time fits the same picture, and here the debt is to Whitehead. On this reading a form is a timeless possibility, and time is the dimension in which it becomes actual and embodied &mdash; what Whitehead called the form&rsquo;s <em>ingression</em> into matter. An agent is what lets a timeless shape unfold through action. Whether this is ontology or only a useful lens is the open question from the last section, carried one level deeper.</p></div>
   </section>
-  <section class="scene card is-short" style="background-image:url('fptm-assets/interlude-4.webp')">
+  <section id="card-ideas" class="scene card is-short" style="background-image:url('fptm-assets/interlude-4.webp')">
   <button type="button" class="cardtoggle" aria-label="Toggle detail"></button>
   <p class="kicker k-mint" data-i18n="k.ideas"><span class="dot"></span>Ideas</p>
   <div class="card-short" data-i18n="ideas.short"><h2>Ideologies behave like attractors</h2><p>Ideas move between minds, and some behave like attractors: cheap, sticky, self-sealing. Fascism, Nazism, and <em>ruscism</em> hand a believer an identity, an enemy, an explanation, and a mission in one move, then treat every correction as persecution and every doubt as betrayal.</p></div>
   <div class="card-full" data-i18n="ideas.full"><h2>Ideologies behave like attractors too</h2><p>Ideas live in minds and travel between them, and some of them behave like attractors. An ideology compresses a mess of experience into one simple shape, spreads, rewards belonging, punishes doubt, and explains its own failures by demanding more of itself. <em>We are pure and they are corrupt. Everything wrong comes from them. Doubt is betrayal.</em> That is a very cheap compression. It accounts for a great deal with one brutal rule, which is exactly what makes it attractive, and it stays false and self-sealing the whole time.</p><p>Authoritarian ultranationalist ideologies &mdash; fascism, Nazism, and contemporary Russian fascism (<em>ruscism</em>, the self-justifying militarism behind Russia&rsquo;s war on Ukraine, which is how Timothy Snyder reads the present Russian state) &mdash; behave like pathological attractors in idea-space, and reading them that way explains their stickiness. They hand a believer identity, an enemy, an explanation, and a mission in a single move. Their core pathology is that they are self-sealing: correction is reinterpreted as persecution, doubt as betrayal, and failure as proof that the doctrine has not yet been applied completely enough.</p></div>
   </section>
-  <section class="scene card is-short" style="background-image:url('fptm-assets/interlude-5.webp')">
+  <section id="card-selection" class="scene card is-short" style="background-image:url('fptm-assets/interlude-5.webp')">
   <button type="button" class="cardtoggle" aria-label="Toggle detail"></button>
   <p class="kicker k-purp" data-i18n="k.selection"><span class="dot"></span>Selection</p>
   <div class="card-short" data-i18n="selection.short"><h2>Which patterns should we realize?</h2><p>Plenty of stable patterns are worth refusing &mdash; cancer, addiction, fascism &mdash; locally stable and globally destructive, holding themselves together by eating the systems that hold them. That a pattern can exist says nothing about whether to build it. The choice is value-laden, and it falls to us.</p></div>
-  <div class="card-full" data-i18n="selection.full"><h2>Which patterns should we realize?</h2><p>The map would be incomplete if it stopped at description, because plenty of stable patterns are worth refusing: cancer, addiction loops, torture systems, a maximizer that grinds the world into paperclips. That a pattern can exist tells you nothing about whether it should be built. That last step is a choice, and it carries values the earlier steps do not contain.</p><p>What those examples share is a particular shape: they are <strong>locally stable and globally destructive</strong>. Cancer is a cellular attractor that violates the coherence of the organism. Addiction is a reward-loop attractor that consumes the agency of the person. Fascism is a social attractor that devours plural human agency. A pattern can be perfectly stable and still be pathological if it preserves itself by destroying the larger systems that make it possible.</p><p>That a pattern can exist says nothing about whether it should be built. Which patterns are worth realizing is a separate question we haven't explored here yet. Prediction is the floor; the choice is not in the physics.</p><p>Still, the choice falls to someone. As conscious agents we are the ones who can recognize that these patterns exist at all, and that recognition is where the duty starts: to seek them out, test them, and choose. Who, if not us?</p></div>
+  <div class="card-full" data-i18n="selection.full"><h2>Which patterns should we realize?</h2><p>The map would be incomplete if it stopped at description, because plenty of stable patterns are worth refusing: cancer, addiction loops, torture systems, a maximizer that grinds the world into paperclips. That a pattern can exist tells you nothing about whether it should be built. That last step is a choice, and it carries values the earlier steps do not contain.</p><p>What those examples share is a particular shape: they are <strong>locally stable and globally destructive</strong>. Cancer is a cellular attractor that violates the coherence of the organism. Addiction is a reward-loop attractor that consumes the agency of the person. Fascism is a social attractor that devours plural human agency. A pattern can be perfectly stable and still be pathological if it preserves itself by destroying the larger systems that make it possible.</p><p>That a pattern can exist says nothing about whether it should be built; prediction is the floor, and the choice is not in the physics. If those examples already point at a rule, it is this: prefer patterns that preserve or widen plural agency across scales, and refuse the ones that keep themselves alive by consuming the agency of the larger systems they belong to. That is one axiom and a starting point open to challenge, well short of a finished ethics.</p><p>Still, the choice falls to someone. As conscious agents we are the ones who can recognize that these patterns exist at all, and that recognition is where the duty starts: to seek them out, test them, and choose. Who, if not us?</p></div>
   </section>
   <section class="scene" style="background-image:url('fptm-assets/interlude-6.webp')">
   <p class="kicker k-gold" data-i18n="k.open"><span class="dot"></span>Open</p>
@@ -858,7 +863,7 @@ svg text {
 </main>
 
 <!-- Modal overlay with glassmorphism -->
-<div class="modal-overlay" id="cardModal" aria-hidden="true" role="dialog">
+<div class="modal-overlay" id="cardModal" aria-hidden="true" role="dialog" aria-modal="true">
   <div class="modal-content" id="modalContent">
     <button type="button" class="modal-close" id="modalClose" aria-label="Close modal">&times;</button>
     <div class="modal-body" id="modalBody"></div>
@@ -966,7 +971,10 @@ svg text {
         var dist = Math.hypot(dx, dy);
         var dt = Date.now() - clickStart.time;
         if(dist < 8 && dt < 400){
-          var node = e.target.closest('.map-node');
+          // pointer capture retargets e.target to the frame, so resolve the
+          // element actually under the cursor (SVG text is pointer-events:none)
+          var hit = document.elementFromPoint(e.clientX, e.clientY);
+          var node = hit && hit.closest ? hit.closest('.map-node') : null;
           if(node){
             var targetId = node.getAttribute('data-target');
             if(targetId && typeof window.openCardModal === 'function'){
@@ -1067,7 +1075,18 @@ svg text {
   var modalNext = document.getElementById('modalNext');
   
   window.currentCardId = null;
+  var lastFocused = null;
   var SEQUENCE = ['ladder', 'logic', 'agency', 'compute', 'beauty', 'reality', 'existence', 'ideas', 'selection'];
+
+  function trapFocus(e){
+    if(e.key !== 'Tab') return;
+    var f = Array.prototype.slice.call(modalContent.querySelectorAll('button, [href], [tabindex]:not([tabindex="-1"])'))
+              .filter(function(el){ return el.offsetParent !== null && !el.disabled; });
+    if(!f.length) return;
+    var first = f[0], last = f[f.length - 1];
+    if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+    else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+  }
 
   function openCardModal(targetId){
     var card = document.getElementById('card-' + targetId);
@@ -1098,9 +1117,12 @@ svg text {
     updateModalNav();
     
     // Show modal
+    if(!modal.classList.contains('active')) lastFocused = document.activeElement;
     modal.classList.add('active');
     modal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden'; // prevent scrolling behind modal
+    document.addEventListener('keydown', trapFocus);
+    setTimeout(function(){ modalClose.focus(); }, 0);
   }
 
   function closeCardModal(){
@@ -1108,6 +1130,8 @@ svg text {
     modal.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
     window.currentCardId = null;
+    document.removeEventListener('keydown', trapFocus);
+    if(lastFocused && lastFocused.focus){ lastFocused.focus(); lastFocused = null; }
   }
 
   function updateModalNav(){
@@ -1171,8 +1195,22 @@ svg text {
       setTimeout(updateModalNav, 0);
     });
   });
+
+  // Activate map nodes with the keyboard (Enter / Space)
+  document.addEventListener('keydown', function(e){
+    if(e.key !== 'Enter' && e.key !== ' ' && e.key !== 'Spacebar') return;
+    var node = e.target && e.target.closest ? e.target.closest('.map-node') : null;
+    if(node){
+      e.preventDefault();
+      var t = node.getAttribute('data-target');
+      if(t) openCardModal(t);
+    }
+  });
 })();
 </script>
+
+
+
 
 
 
