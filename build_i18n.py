@@ -615,7 +615,7 @@ EXTRA_CSS = """
   padding:3px; border:1px solid var(--line); border-radius:999px;
   background:rgba(8,12,26,.55); -webkit-backdrop-filter:blur(9px); backdrop-filter:blur(9px);
   box-shadow:0 8px 26px -16px rgba(0,0,0,.9)}
-.langswitch button{font-family:"Fraunces",serif; font-size:11.5px; letter-spacing:.16em; text-transform:uppercase;
+.langswitch button{font-family:"Fraunces","Playfair Display",serif; font-size:11.5px; letter-spacing:.16em; text-transform:uppercase;
   color:var(--mute); background:transparent; border:0; padding:5px 11px; border-radius:999px; cursor:pointer;
   line-height:1; transition:color .18s, background .18s}
 .langswitch button:hover{color:var(--soft)}
@@ -673,13 +673,13 @@ HEAD = """<!DOCTYPE html>
 <meta name="twitter:image" content="https://latand.github.io/from-pattern-to-mind/from-pattern-to-mind-diagram.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Playfair+Display:ital,wght@0,400..700;1,400..600&family=Literata:ital,opsz,wght@0,7..72,300..600;1,7..72,300..500&display=swap" rel="stylesheet">
 """
 
 svg = build_svg()
 
 BODY = """</head>
-<body class="mode-short">
+<body class="mode-full">
 <div class="langswitch" role="group" aria-label="Language">
   <button type="button" data-lang="en">EN</button>
   <button type="button" data-lang="uk">UK</button>

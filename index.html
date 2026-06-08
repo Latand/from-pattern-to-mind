@@ -16,7 +16,7 @@
 <meta name="twitter:image" content="https://latand.github.io/from-pattern-to-mind/from-pattern-to-mind-diagram.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Playfair+Display:ital,wght@0,400..700;1,400..600&family=Literata:ital,opsz,wght@0,7..72,300..600;1,7..72,300..500&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#080C1A; --bg2:#0B1124; --panel:#0E1530; --line:#23314f;
@@ -32,7 +32,7 @@ body{
     radial-gradient(900px 900px at 60% 120%, rgba(183,156,240,.07), transparent 60%),
     var(--bg);
   color:var(--soft);
-  font-family:"Newsreader", Georgia, serif;
+  font-family:"Newsreader","Literata",Georgia,serif;
   font-size:20px; line-height:1.72; letter-spacing:.1px;
   -webkit-font-smoothing:antialiased;
 }
@@ -52,9 +52,9 @@ body::before{
 
 /* hero */
 header.hero{max-width:760px; margin:0 auto; padding:120px 0 40px}
-.eyebrow{font-family:"Fraunces",serif; font-size:12.5px; letter-spacing:.34em; text-transform:uppercase; color:var(--mint); margin:0 0 26px; font-weight:600}
+.eyebrow{font-family:"Fraunces","Playfair Display",serif; font-size:12.5px; letter-spacing:.34em; text-transform:uppercase; color:var(--mint); margin:0 0 26px; font-weight:600}
 h1{
-  font-family:"Fraunces", serif; font-optical-sizing:auto;
+  font-family:"Fraunces","Playfair Display",serif; font-optical-sizing:auto;
   font-weight:380; font-size:clamp(46px,8vw,86px); line-height:1.02;
   letter-spacing:-.01em; margin:0 0 24px; color:var(--ink);
 }
@@ -66,27 +66,27 @@ h1 em{font-style:italic; color:var(--mint); font-weight:380}
 p{margin:0 0 24px}
 .lede{font-size:22.5px; color:var(--ink); margin:0 0 24px}
 .lede::first-letter{
-  font-family:"Fraunces",serif; font-weight:420; float:left; font-size:78px;
+  font-family:"Fraunces","Playfair Display",serif; font-weight:420; float:left; font-size:78px;
   line-height:.78; padding:8px 14px 0 0; color:var(--blue);
 }
 section{margin:64px auto 0}
-.kicker{display:flex; align-items:center; gap:11px; font-family:"Fraunces",serif; font-size:12.5px; letter-spacing:.26em; text-transform:uppercase; color:var(--mute); margin:0 0 14px; font-weight:600}
+.kicker{display:flex; align-items:center; gap:11px; font-family:"Fraunces","Playfair Display",serif; font-size:12.5px; letter-spacing:.26em; text-transform:uppercase; color:var(--mute); margin:0 0 14px; font-weight:600}
 .kicker .dot{width:9px; height:9px; border-radius:2px; background:var(--blue); box-shadow:0 0 12px currentColor}
 .k-blue .dot{background:var(--blue);color:var(--blue)} .k-mint .dot{background:var(--mint);color:var(--mint)}
 .k-purp .dot{background:var(--purp);color:var(--purp)} .k-gold .dot{background:var(--gold);color:var(--gold)}
-h2{font-family:"Fraunces",serif; font-weight:400; font-size:clamp(28px,4.4vw,38px); line-height:1.12; letter-spacing:-.01em; color:var(--ink); margin:0 0 22px}
+h2{font-family:"Fraunces","Playfair Display",serif; font-weight:400; font-size:clamp(28px,4.4vw,38px); line-height:1.12; letter-spacing:-.01em; color:var(--ink); margin:0 0 22px}
 strong{color:var(--ink); font-weight:600}
 
 /* ladder */
 .ladder{list-style:none; padding:0; margin:8px 0 4px; border-left:1px solid var(--line)}
 .ladder li{position:relative; padding:14px 0 14px 28px}
 .ladder li::before{content:""; position:absolute; left:-5px; top:24px; width:9px; height:9px; border-radius:50%; background:var(--blue); box-shadow:0 0 12px var(--blue)}
-.ladder b{font-family:"Fraunces",serif; color:var(--ink); font-weight:600; font-size:19px}
+.ladder b{font-family:"Fraunces","Playfair Display",serif; color:var(--ink); font-weight:600; font-size:19px}
 .ladder span{color:var(--soft)}
 
 /* pull quote */
 blockquote{margin:46px 0; padding:6px 0 6px 30px; border-left:2px solid var(--mint)}
-blockquote p{font-family:"Fraunces",serif; font-style:italic; font-weight:380; font-size:clamp(26px,4.2vw,34px); line-height:1.2; color:var(--ink); margin:0}
+blockquote p{font-family:"Fraunces","Playfair Display",serif; font-style:italic; font-weight:380; font-size:clamp(26px,4.2vw,34px); line-height:1.2; color:var(--ink); margin:0}
 
 /* figure */
 figure.diagram{margin:78px auto; max-width:1180px}
@@ -105,7 +105,7 @@ figure.diagram{margin:78px auto; max-width:1180px}
 .mapctl button{width:34px; height:34px; border-radius:9px; border:1px solid var(--line); background:rgba(14,21,48,.82); color:var(--soft); font-size:19px; line-height:1; cursor:pointer; font-family:inherit; -webkit-backdrop-filter:blur(4px); backdrop-filter:blur(4px); transition:border-color .15s, color .15s}
 .mapctl button.reset{width:auto; padding:0 13px; font-size:13px; letter-spacing:.04em}
 .mapctl button:hover{border-color:var(--blue); color:var(--ink)}
-.maphint{position:absolute; left:20px; top:14px; z-index:2; color:var(--mute); font-size:12.5px; font-family:"Fraunces",serif; font-style:italic; pointer-events:none; transition:opacity .4s}
+.maphint{position:absolute; left:20px; top:14px; z-index:2; color:var(--mute); font-size:12.5px; font-family:"Fraunces","Playfair Display",serif; font-style:italic; pointer-events:none; transition:opacity .4s}
 .frame.touched .maphint{opacity:0}
 figcaption{color:var(--mute); font-size:15.5px; line-height:1.6; margin:18px 6px 0; font-style:italic}
 
@@ -122,25 +122,25 @@ figcaption{color:var(--mute); font-size:15.5px; line-height:1.6; margin:18px 6px
 .scene h2{text-shadow:0 2px 18px rgba(4,7,18,.92)}
 .scene p, .scene li, .scene .q, .scene blockquote p, .scene .ladder b, .scene .ladder span{text-shadow:0 1px 8px rgba(4,7,18,.95)}
 @media(max-width:680px){ .scene{margin:18px 0 0; padding:40px 22px} }
-.legend{display:flex; flex-wrap:wrap; gap:18px; margin:16px 6px 0; font-family:"Fraunces",serif; font-size:13px; letter-spacing:.02em; color:var(--soft)}
+.legend{display:flex; flex-wrap:wrap; gap:18px; margin:16px 6px 0; font-family:"Fraunces","Playfair Display",serif; font-size:13px; letter-spacing:.02em; color:var(--soft)}
 .legend i{display:inline-block; width:22px; height:0; border-top:3px solid; margin-right:8px; vertical-align:middle}
 .legend .hard{border-color:var(--blue)} .legend .bridge{border-color:var(--mint)}
 .legend .spec{border-color:var(--purp); border-top-style:dashed} .legend .open{border-color:var(--gold); border-top-style:dashed}
 .legend .norm{border-color:var(--rose)}
 
 /* questions */
-.q{font-family:"Fraunces",serif; font-style:italic; font-size:22px; color:var(--ink); margin:0 0 18px; padding-left:22px; border-left:1px solid var(--gold)}
+.q{font-family:"Fraunces","Playfair Display",serif; font-style:italic; font-size:22px; color:var(--ink); margin:0 0 18px; padding-left:22px; border-left:1px solid var(--gold)}
 
 /* close */
 .close{margin-top:80px; padding:34px 32px; border:1px solid var(--line); border-radius:16px;
   background:radial-gradient(600px 200px at 30% 0%, rgba(94,234,212,.06), transparent), var(--panel)}
 .close p{margin:0; font-size:19px}
-.close .mark{font-family:"Fraunces",serif; font-style:italic; color:var(--mint)}
+.close .mark{font-family:"Fraunces","Playfair Display",serif; font-style:italic; color:var(--mint)}
 
 /* sources / references apparatus */
 .sources{max-width:728px; margin:80px auto 0}
 .sources .note{font-style:italic; color:var(--mute); font-size:16px; margin:0 0 26px}
-.sources h3{font-family:"Fraunces",serif; font-size:12px; letter-spacing:.22em; text-transform:uppercase; color:var(--mint); font-weight:600; margin:28px 0 10px}
+.sources h3{font-family:"Fraunces","Playfair Display",serif; font-size:12px; letter-spacing:.22em; text-transform:uppercase; color:var(--mint); font-weight:600; margin:28px 0 10px}
 .sources ul{list-style:none; padding:0; margin:0}
 .sources li{font-size:15px; line-height:1.5; color:var(--mute); margin:0 0 8px; padding-left:20px; text-indent:-20px}
 .sources li cite{font-style:italic; color:var(--soft)}
@@ -166,7 +166,7 @@ a{color:var(--blue); text-decoration:none; border-bottom:1px solid rgba(138,180,
 
 /* version toggle */
 .modeswitch{max-width:760px; margin:0 auto; display:flex; justify-content:center; gap:8px}
-.modeswitch button{font-family:"Fraunces",serif; font-size:13px; letter-spacing:.05em; color:var(--mute); background:transparent; border:1px solid var(--line); padding:7px 20px; border-radius:999px; cursor:pointer; transition:color .15s, border-color .15s, background .15s}
+.modeswitch button{font-family:"Fraunces","Playfair Display",serif; font-size:13px; letter-spacing:.05em; color:var(--mute); background:transparent; border:1px solid var(--line); padding:7px 20px; border-radius:999px; cursor:pointer; transition:color .15s, border-color .15s, background .15s}
 .modeswitch button:hover{color:var(--soft)}
 .modeswitch button.active{color:var(--ink); border-color:var(--mint); background:rgba(94,234,212,.08)}
 body.mode-short .v-full{display:none}
@@ -313,7 +313,7 @@ svg text {
   padding: 8px 18px;
   border-radius: 99px;
   cursor: pointer;
-  font-family: "Fraunces", serif;
+  font-family: "Fraunces","Playfair Display",serif;
   font-size: 14px;
   transition: all 0.2s ease;
   backdrop-filter: blur(4px);
@@ -335,7 +335,7 @@ svg text {
   padding:3px; border:1px solid var(--line); border-radius:999px;
   background:rgba(8,12,26,.55); -webkit-backdrop-filter:blur(9px); backdrop-filter:blur(9px);
   box-shadow:0 8px 26px -16px rgba(0,0,0,.9)}
-.langswitch button{font-family:"Fraunces",serif; font-size:11.5px; letter-spacing:.16em; text-transform:uppercase;
+.langswitch button{font-family:"Fraunces","Playfair Display",serif; font-size:11.5px; letter-spacing:.16em; text-transform:uppercase;
   color:var(--mute); background:transparent; border:0; padding:5px 11px; border-radius:999px; cursor:pointer;
   line-height:1; transition:color .18s, background .18s}
 .langswitch button:hover{color:var(--soft)}
@@ -347,7 +347,7 @@ svg text {
 .modeswitch button.active{border-color:var(--mint); background:transparent; color:var(--ink)}
 </style>
 </head>
-<body class="mode-short">
+<body class="mode-full">
 <div class="langswitch" role="group" aria-label="Language">
   <button type="button" data-lang="en">EN</button>
   <button type="button" data-lang="uk">UK</button>
@@ -1009,7 +1009,7 @@ svg text {
   }
 
   var saved = localStorage.getItem('fptm-mode');
-  setAll(saved === 'full' ? 'full' : 'short');
+  setAll(saved === 'short' ? 'short' : 'full');
 
   switches.forEach(function(b){
     b.addEventListener('click', function(){
@@ -1173,6 +1173,9 @@ svg text {
   });
 })();
 </script>
+
+
+
 
 
 
